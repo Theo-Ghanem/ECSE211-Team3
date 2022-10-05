@@ -7,6 +7,7 @@ This file must be run on the robot.
 
 from utils import sound
 from utils.brick import TouchSensor, wait_ready_sensors
+from time import sleep
 
 SOUND = sound.Sound(duration=0.3, pitch="A4", volume=60)
 TOUCH_SENSOR = TouchSensor(1)
@@ -31,6 +32,7 @@ def play_sound_on_button_press():
                 running = False
             elif not TOUCH_SENSOR.is_pressed():
                 running = True
+            sleep(0.01)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
