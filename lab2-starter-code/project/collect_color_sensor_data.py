@@ -27,6 +27,7 @@ def collect_color_sensor_data():
         while True:
             sleep(0.01)
             if touch.is_pressed() and not running:
+                print("pressed")
                 sd = sw.get_value()
                 f.write('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
                 sleep(SENSOR_POLL)
