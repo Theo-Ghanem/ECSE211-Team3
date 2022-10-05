@@ -27,13 +27,12 @@ def play_sound_on_button_press():
     try:
         running = False
         while True:
+            sleep(0.01)
             if TOUCH_SENSOR.is_pressed() and not running:
                 play_sound()
-                running = False
-            elif not TOUCH_SENSOR.is_pressed():
                 running = True
-            sleep(0.01)
-
+            elif not TOUCH_SENSOR.is_pressed():
+                running = False
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
