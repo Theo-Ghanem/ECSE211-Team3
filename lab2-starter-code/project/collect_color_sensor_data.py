@@ -29,7 +29,7 @@ def collect_color_sensor_data():
             if touch.is_pressed() and not running:
                 sd = sw.get_value()
                 f.write('{:d}{:d}{:d}{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
-                time.sleep(SENSOR_POLL)
+                sleep(SENSOR_POLL)
                 running = True
             elif not touch.is_pressed() :
                 running = False
