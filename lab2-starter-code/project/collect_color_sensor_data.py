@@ -20,17 +20,19 @@ wait_ready_sensors(True) # Input True to see what the robot is trying to initial
 
 
 def collect_color_sensor_data():
-     try:
-        f = open(COLOR_SENSOR_DATA_FILE, "w");
-        running = false
+
+    try:
+        f = open(COLOR_SENSOR_DATA_FILE, "w")
+        running = False
         while True:
             sleep(0.01)
             if touch.is_pressed() and not running:
-                sd = sw.get_value();
+                sd = sw.get_value()
                 f.write('{:d}{:d}{:d}{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
-                time.sleep(SENSOR_POLL);
-            elif not touch.is_pressed():
-                running = false
+                time.sleep(SENSOR_POLL)
+                running = True
+            elif not touch.is_pressed() :
+                running = False
 
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
