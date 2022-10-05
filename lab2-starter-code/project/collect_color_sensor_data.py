@@ -7,6 +7,7 @@ It must be run on the robot.
 
 # Add your imports here, if any
 from utils.brick import EV3ColorSensor, wait_ready_sensors, TouchSensor
+from time import sleep
 
 
 COLOR_SENSOR_DATA_FILE = "../data_analysis/color_sensor.csv"
@@ -20,7 +21,6 @@ wait_ready_sensors(True) # Input True to see what the robot is trying to initial
 
 
 def collect_color_sensor_data():
-
     try:
         f = open(COLOR_SENSOR_DATA_FILE, "w")
         running = False
@@ -38,7 +38,6 @@ def collect_color_sensor_data():
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
-    ...
 
 
 if __name__ == "__main__":
