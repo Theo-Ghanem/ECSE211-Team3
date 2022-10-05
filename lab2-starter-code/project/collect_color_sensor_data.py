@@ -28,7 +28,7 @@ def collect_color_sensor_data():
             sleep(0.01)
             if touch.is_pressed() and not running:
                 sd = sw.get_value()
-                f.write('{:d}{:d}{:d}{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
+                f.write('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
                 sleep(SENSOR_POLL)
                 running = True
             elif not touch.is_pressed() :
@@ -37,6 +37,11 @@ def collect_color_sensor_data():
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
+        pass
+    finally:
+        print("Done collecting US distance samples")
+        f.close()
+        reset_brick() # Turn off everything on the brick's hardware, and reset it
         exit()
 
 
