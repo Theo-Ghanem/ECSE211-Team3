@@ -40,7 +40,7 @@ def collect_color_sensor_data():
     except BaseException:
         pass
     finally:
-        print("Done collecting US distance samples")
+        print("Done collecting color sensor")
         f.close()
         reset_brick() # Turn off everything on the brick's hardware, and reset it
         exit()
