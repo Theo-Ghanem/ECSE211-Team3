@@ -15,3 +15,4 @@ motor_left.set_position_relative(-180)
 while motor_left.is_moving():
     time.sleep(0.1)
 print("motor_left.set_position_relative(-180)")
+input("Press any key to continue...")
