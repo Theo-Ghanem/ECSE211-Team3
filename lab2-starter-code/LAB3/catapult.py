@@ -32,6 +32,7 @@ def launch_cube_on_button_press():
 
 def launch_cube():
     # command to rotate 80deg away from current position
+    motor_left.set_limits(dps=0)
     motor_left.set_position_relative(-80)
     while motor_left.is_moving():
         sleep(0.1)
@@ -39,6 +40,7 @@ def launch_cube():
 
     sleep(1)
     # command to rotate 80deg away from current position
+    motor_left.set_limits(dps=360)
     motor_left.set_position_relative(80)
     while motor_left.is_moving():
         sleep(0.1)
