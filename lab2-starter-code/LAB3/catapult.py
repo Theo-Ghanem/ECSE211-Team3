@@ -13,31 +13,51 @@ motor_left.set_limits(dps=720)
 # set current position to absolute pos 0deg
 motor_left.reset_encoder()
 
-# command to rotate 60deg away from current position
-motor_left.set_position_relative(-160)
-while motor_left.is_moving():
-    sleep(0.1)
-print("motor_left.set_position_relative(-160)")
-input("Press any key to continue...")
+# # command to rotate 60deg away from current position
+# motor_left.set_position_relative(-160)
+# while motor_left.is_moving():
+#     sleep(0.1)
+# print("motor_left.set_position_relative(-160)")
+# input("Press any key to continue...")
 
-# command to rotate 60deg away from current position
-motor_left.set_position_relative(160)
-while motor_left.is_moving():
-    sleep(0.1)
-print("motor_left.set_position_relative(160)")
+# # command to rotate 60deg away from current position
+# motor_left.set_position_relative(160)
+# while motor_left.is_moving():
+#     sleep(0.1)
+# print("motor_left.set_position_relative(160)")
+# input("Press any key to continue...")
 
 
-# def launch_cube_on_button_press():
-#     "In an infinite loop, launch the cube when the touch sensor is pressed."
-#     try:
-#         running = False
-#         while True:
-#             sleep(0.01)
-#             if TOUCH_SENSOR.is_pressed() and not running:
-#                 play_sound()
-#                 running = True
-#             elif not TOUCH_SENSOR.is_pressed():
-#                 running = False
-#     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
-#     except BaseException:
-#         exit()
+def launch_cube_on_button_press():
+    "In an infinite loop, launch the cube when the touch sensor is pressed."
+    try:
+        running = False
+        while True:
+            sleep(0.01)
+            if TOUCH_SENSOR.is_pressed() and not running:
+                launch_cube()
+                running = True
+            elif not TOUCH_SENSOR.is_pressed():
+                running = False
+    # capture all exceptions including KeyboardInterrupt (Ctrl-C)
+    except BaseException:
+        exit()
+
+
+def launch_cube():
+    # command to rotate 60deg away from current position
+    motor_left.set_position_relative(-160)
+    while motor_left.is_moving():
+        sleep(0.1)
+    print("motor_left.set_position_relative(-160)")
+
+    sleep(1)
+    # command to rotate 60deg away from current position
+    motor_left.set_position_relative(160)
+    while motor_left.is_moving():
+        sleep(0.1)
+    print("motor_left.set_position_relative(160)")
+
+
+if __name__ == '__main__':
+    launch_cube_on_button_press()
