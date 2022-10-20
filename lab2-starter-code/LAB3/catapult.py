@@ -25,7 +25,6 @@ motor_left.set_position_relative(160)
 while motor_left.is_moving():
     sleep(0.1)
 print("motor_left.set_position_relative(160)")
-input("Press any key to continue...")
 
 
 # def launch_cube_on_button_press():
