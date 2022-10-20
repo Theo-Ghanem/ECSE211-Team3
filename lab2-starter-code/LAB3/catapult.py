@@ -44,6 +44,7 @@ def launch_cube():
         sleep(0.1)
     print("motor_left.set_position_relative(130)")
 
+    sleep(0.1)
     motor_left.set_power(0)  # always do 0% to stop motor
     print("motor_left.set_power(0)")
 
