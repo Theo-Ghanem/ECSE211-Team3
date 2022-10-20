@@ -5,12 +5,7 @@ motor_left = Motor("A")
 
 # Set target speed first, 360 deg/sec
 # Reset power limit to limitless with 0, default values:(power=0, dps=0)
-motor_left.set_limits(dps=360)
-
-
-motor_left.set_power(70)  # increase to 70% instead of 20%
-print("motor_left.set_power(70)")
-input("# Press any key to continue...")
+motor_left.set_limits(dps=0)
 
 # set current position to absolute pos 0deg
 motor_left.reset_encoder()
