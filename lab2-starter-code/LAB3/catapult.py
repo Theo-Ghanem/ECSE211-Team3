@@ -13,20 +13,6 @@ motor_left.set_limits(dps=720)
 # set current position to absolute pos 0deg
 motor_left.reset_encoder()
 
-# # command to rotate 60deg away from current position
-# motor_left.set_position_relative(-160)
-# while motor_left.is_moving():
-#     sleep(0.1)
-# print("motor_left.set_position_relative(-160)")
-# input("Press any key to continue...")
-
-# # command to rotate 60deg away from current position
-# motor_left.set_position_relative(160)
-# while motor_left.is_moving():
-#     sleep(0.1)
-# print("motor_left.set_position_relative(160)")
-# input("Press any key to continue...")
-
 
 def launch_cube_on_button_press():
     "In an infinite loop, launch the cube when the touch sensor is pressed."
@@ -46,17 +32,20 @@ def launch_cube_on_button_press():
 
 def launch_cube():
     # command to rotate 60deg away from current position
-    motor_left.set_position_relative(-160)
+    motor_left.set_position_relative(-130)
     while motor_left.is_moving():
         sleep(0.1)
-    print("motor_left.set_position_relative(-160)")
+    print("motor_left.set_position_relative(-130)")
 
     sleep(1)
     # command to rotate 60deg away from current position
-    motor_left.set_position_relative(160)
+    motor_left.set_position_relative(130)
     while motor_left.is_moving():
         sleep(0.1)
-    print("motor_left.set_position_relative(160)")
+    print("motor_left.set_position_relative(130)")
+
+    motor_left.set_power(0)  # always do 0% to stop motor
+    print("motor_left.set_power(0)")
 
 
 if __name__ == '__main__':
