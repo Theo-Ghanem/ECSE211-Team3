@@ -10,13 +10,21 @@ from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 from catapult import *
 
+motor_left = Motor("A")
+# Set target speed first, 360 deg/sec
+# Reset power limit to limitless with 0, default values:(power=0, dps=0)
+motor_left.set_limits(dps=720)
+
+# set current position to absolute pos 0deg
+motor_left.reset_encoder()
+
 ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
 
 wait_ready_sensors(True)
 
-async def read_button_colour(touch_sensor):
+async def read_button_colour(touch_sensor, motor_left):
     try:
         running = False
         while True:
@@ -25,7 +33,7 @@ async def read_button_colour(touch_sensor):
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
                 # await read_colour()
-                await launch_cube()
+                await launch_cube(motor_left)
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
@@ -67,7 +75,7 @@ if __name__ == '__main__':
     try:
         print("Starting threads")
         kill_threads = False
-        colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour),))
+        colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour, motor_left),))
         colour_thread.daemon = True
         drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
         drum_thread.daemon = True
