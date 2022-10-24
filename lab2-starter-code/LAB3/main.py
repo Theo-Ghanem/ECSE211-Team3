@@ -64,7 +64,7 @@ async def read_button_stop(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Emergency stop button pressed")
-                exit()
+                raise Exception("Stop program")
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -84,7 +84,7 @@ if __name__ == '__main__':
         colour_thread.join()
         drum_thread.join()
         stop_thread.join()
-    except BaseException:
+    except Exception:
         exit()
 
 
