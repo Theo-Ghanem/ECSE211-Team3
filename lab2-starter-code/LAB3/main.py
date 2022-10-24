@@ -68,9 +68,9 @@ async def read_button_stop(touch_sensor):
 
 if __name__ == '__main__':
     print("Starting threads")
-    colour_thread = Thread(target=read_button_colour(ts_colour))
-    drum_thread = Thread(target=read_button_drums(ts_drums))
-    stop_thread = Thread(target=read_button_stop(ts_stop))
+    colour_thread = Thread(target=read_button_colour, args=(ts_colour))
+    drum_thread = Thread(target=read_button_drums, args=(ts_drums))
+    stop_thread = Thread(target=read_button_stop, args=(ts_stop))
 
     colour_thread.start()
     drum_thread.start()
