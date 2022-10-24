@@ -82,8 +82,11 @@ if __name__ == '__main__':
         print("Starting threads")
         kill_threads = False
         colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour),))
+        colour_thread.daemon = True
         drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
+        drum_thread.daemon = True
         stop_thread = Thread(target=asyncio.run, args=(read_button_stop(ts_stop),))
+        stop_thread.daemon = True
 
         colour_thread.start()
         drum_thread.start()
