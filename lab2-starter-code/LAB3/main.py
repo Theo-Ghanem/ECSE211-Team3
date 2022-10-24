@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import asyncio
+from os import kill
 from threading import Thread
 
 from utils.sound import Sound
@@ -36,6 +37,8 @@ async def read_button_colour(touch_sensor):
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
+            elif kill_threads:
+                break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -53,6 +56,8 @@ async def read_button_drums(touch_sensor):
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
+            elif kill_threads:
+                break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -64,7 +69,9 @@ async def read_button_stop(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Emergency stop button pressed")
-                raise Exception("Stop program")
+                global kill_threads
+                kill_threads = True
+                break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -73,6 +80,7 @@ async def read_button_stop(touch_sensor):
 if __name__ == '__main__':
     try:
         print("Starting threads")
+        kill_threads = False
         colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour),))
         drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
         stop_thread = Thread(target=asyncio.run, args=(read_button_stop(ts_stop),))
@@ -84,7 +92,9 @@ if __name__ == '__main__':
         colour_thread.join()
         drum_thread.join()
         stop_thread.join()
-    except Exception:
+
+        exit()
+    except BaseException:
         exit()
 
 
