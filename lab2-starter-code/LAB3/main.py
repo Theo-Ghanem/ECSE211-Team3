@@ -39,6 +39,7 @@ async def read_button_colour(touch_sensor):
                 running = False
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
+        print("Exception colour sensing")
         exit()
 
 async def read_button_drums(touch_sensor):
