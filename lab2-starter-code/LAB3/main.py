@@ -2,6 +2,8 @@
 
 from threading import Thread
 
+from pyparsing import col
+
 from utils.sound import Sound
 from colour_sensing import read_colour
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
@@ -68,8 +70,12 @@ async def read_button_stop(touch_sensor):
 
 if __name__ == '__main__':
     print("Starting threads")
-    Thread(target=read_button_colour(ts_colour))
-    Thread(target=read_button_drums(ts_drums))
-    Thread(target=read_button_stop(ts_stop))
+    colour_thread = Thread(target=read_button_colour(ts_colour))
+    drum_thread = Thread(target=read_button_drums(ts_drums))
+    stop_thread = Thread(target=read_button_stop(ts_stop))
+
+    colour_thread.start()
+    drum_thread.start()
+    stop_thread.start()
 
 
