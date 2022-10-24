@@ -3,21 +3,6 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-def launch_cube_on_button_press():
-    "In an infinite loop, launch the cube when the touch sensor is pressed."
-    try:
-        running = False
-        while True:
-            sleep(0.01)
-            if TOUCH_SENSOR.is_pressed() and not running:
-                launch_cube()
-                running = True
-            elif not TOUCH_SENSOR.is_pressed():
-                running = False
-    # capture all exceptions including KeyboardInterrupt (Ctrl-C)
-    except BaseException:
-        exit()
-
 
 async def launch_cube(motor_left):
     # command to rotate 80deg away from current position

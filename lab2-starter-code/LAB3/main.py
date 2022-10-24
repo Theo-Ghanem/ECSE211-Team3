@@ -33,7 +33,7 @@ async def read_button_colour(touch_sensor):
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
                 # await read_colour()
-                launch_cube(motor_left)
+                await launch_cube(motor_left)
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
