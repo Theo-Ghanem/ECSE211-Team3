@@ -31,7 +31,7 @@ async def read_button_colour(touch_sensor):
             if touch_sensor.is_pressed() and not running:
                 # Read colour, wait till done then launch cube
                 await read_colour()
-                #launch_cube()
+                launch_cube()
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
@@ -68,18 +68,21 @@ async def read_button_stop(touch_sensor):
 
 
 if __name__ == '__main__':
-    print("Starting threads")
-    colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour),))
-    drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
-    stop_thread = Thread(target=asyncio.run, args=(read_button_stop(ts_stop),))
+    try:
+        print("Starting threads")
+        colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour),))
+        drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
+        stop_thread = Thread(target=asyncio.run, args=(read_button_stop(ts_stop),))
 
-    colour_thread.start()
-    drum_thread.start()
-    stop_thread.start()
+        colour_thread.start()
+        drum_thread.start()
+        stop_thread.start()
 
-    colour_thread.join()
-    drum_thread.join()
-    stop_thread.join()
+        colour_thread.join()
+        drum_thread.join()
+        stop_thread.join()
+    except BaseException:
+        exit()
 
 
 
