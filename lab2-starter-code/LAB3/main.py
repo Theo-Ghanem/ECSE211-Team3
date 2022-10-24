@@ -76,4 +76,10 @@ if __name__ == '__main__':
     drum_thread.start()
     stop_thread.start()
 
+    colour_thread.join()
+    drum_thread.join()
+    stop_thread.join()
+
+
+
 
