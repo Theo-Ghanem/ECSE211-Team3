@@ -3,17 +3,6 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-motor_left = Motor("A")
-TOUCH_SENSOR = TouchSensor(1)
-
-# Set target speed first, 360 deg/sec
-# Reset power limit to limitless with 0, default values:(power=0, dps=0)
-motor_left.set_limits(dps=720)
-
-# set current position to absolute pos 0deg
-motor_left.reset_encoder()
-
-
 def launch_cube_on_button_press():
     "In an infinite loop, launch the cube when the touch sensor is pressed."
     try:
@@ -30,7 +19,7 @@ def launch_cube_on_button_press():
         exit()
 
 
-def launch_cube():
+def launch_cube(motor_left):
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=0)
     motor_left.set_position_relative(-80)
