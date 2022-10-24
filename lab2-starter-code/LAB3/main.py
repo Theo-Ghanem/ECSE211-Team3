@@ -2,8 +2,6 @@
 
 from threading import Thread
 
-from pyparsing import col
-
 from utils.sound import Sound
 from colour_sensing import read_colour
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
