@@ -10,14 +10,6 @@ from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 from catapult import *
 
-motor_left = Motor("A")
-# Set target speed first, 360 deg/sec
-# Reset power limit to limitless with 0, default values:(power=0, dps=0)
-motor_left.set_limits(dps=720)
-
-# set current position to absolute pos 0deg
-motor_left.reset_encoder()
-
 ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
@@ -33,7 +25,7 @@ async def read_button_colour(touch_sensor):
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
                 # await read_colour()
-                await launch_cube(motor_left)
+                await launch_cube()
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
@@ -61,7 +53,6 @@ async def read_button_drums(touch_sensor):
 
 async def read_button_stop(touch_sensor):
     try:
-        running = False
         while True:
             sleep(0.01)
             if touch_sensor.is_pressed():
