@@ -38,7 +38,7 @@ async def read_button_colour(touch_sensor):
     except BaseException:
         exit()
 
-def read_button_drums(touch_sensor):
+async def read_button_drums(touch_sensor):
     try:
         running = False
         while True:
@@ -54,7 +54,7 @@ def read_button_drums(touch_sensor):
     except BaseException:
         exit()
 
-def read_button_stop(touch_sensor):
+async def read_button_stop(touch_sensor):
     try:
         running = False
         while True:
