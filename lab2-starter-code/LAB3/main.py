@@ -37,8 +37,6 @@ async def read_button_colour(touch_sensor):
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
-            elif kill_threads:
-                break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -56,8 +54,6 @@ async def read_button_drums(touch_sensor):
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
-            elif kill_threads:
-                break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
@@ -69,8 +65,6 @@ async def read_button_stop(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Emergency stop button pressed")
-                global kill_threads
-                kill_threads = True
                 break
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
