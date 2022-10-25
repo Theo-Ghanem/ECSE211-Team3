@@ -10,10 +10,8 @@ async def play_note(color_sensor):
     sleep(1)
     print("doing things")
     data_point = color_sensor.get_value()
-    print(data_point)
-    unknown = ("unknown", data_point[0], data_point[1], data_point[2])
-    unknown = distance(colors, unknown)
-    print(unknown[0])
+    closest_color = distance(data_point)
+    print(data_point,closest_color)
     return None
 
 
@@ -21,6 +19,6 @@ async def play_note(color_sensor):
 def getColorDistance(color,target):
     return math.sqrt((color[0]-target[0])**2+(color[1]-target[1])**2+(color[2]-target[2])**2)
 
-def distance(colors, unknown): 
-    unknown[0] = sorted(colors,key=lambda x:getColorDistance(colors,x[1]))[0][0]
-    return unknown
+def distance(color): 
+    return sorted(colors,key=lambda x:getColorDistance(color,x[1]))[0][0]
+    
