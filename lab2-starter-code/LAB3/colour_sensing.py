@@ -10,7 +10,8 @@ colors = (("red",(0.792319061, 0.09501644, 0.112664499)),("green",(0.145115189, 
 async def play_note(color_sensor):
     sleep(1)
     print("doing things")
-    data_point = normalizePoint(color_sensor.get_value())
+    data_point = color_sensor.get_value()
+    normalizePoint(data_point)
     closest_color = distance(data_point)
     print(data_point,closest_color)
     return None
