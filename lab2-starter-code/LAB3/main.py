@@ -5,8 +5,8 @@ from os import kill
 from threading import Thread
 
 from utils.sound import Sound
-from colour_sensing import read_colour
-from utils.brick import Motor, TouchSensor, wait_ready_sensors
+from colour_sensing import play_note
+from utils.brick import Motor, TouchSensor, EV3ColorSensor, wait_ready_sensors 
 from time import sleep
 from catapult import *
 from drumming import *
@@ -22,9 +22,11 @@ ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
 
+color_sensor = EV3ColorSensor(4)
+
 wait_ready_sensors(True)
 
-async def read_button_colour(touch_sensor, motor_left):
+async def read_button_colour(touch_sensor, motor_left, color_sensor):
     try:
         running = False
         while True:
@@ -32,7 +34,7 @@ async def read_button_colour(touch_sensor, motor_left):
             if touch_sensor.is_pressed() and not running:
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
-                # await read_colour()
+                await play_note(color_sensor)
                 await launch_cube(motor_left)
                 running = True
             elif not touch_sensor.is_pressed():
@@ -65,11 +67,12 @@ async def read_button_stop(touch_sensor):
         exit()
 
 
+
 if __name__ == '__main__':
     try:
         print("Starting threads")
         kill_threads = False
-        colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour, motor_left),))
+        colour_thread = Thread(target=asyncio.run, args=(read_button_colour(ts_colour, motor_left, color_sensor),))
         colour_thread.daemon = True
         drum_thread = Thread(target=asyncio.run, args=(read_button_drums(ts_drums),))
         drum_thread.daemon = True
