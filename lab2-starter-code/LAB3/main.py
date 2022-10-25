@@ -9,7 +9,6 @@ from colour_sensing import read_colour
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 from catapult import *
-from drumming import *
 
 motor_left = Motor("A")
 # Set target speed first, 360 deg/sec
@@ -49,9 +48,9 @@ async def read_button_drums(touch_sensor):
             if touch_sensor.is_pressed() and not running:
                 print("Drum button pressed")
                 while True:
-                    tone1 = Sound(duration=0.5, volume=80, pitch="A3")
+                    tone1 = Sound(duration=0.2, volume=90, pitch="A3")
                     tone1.play()
-                    sleep(1.0)
+                    sleep(0.5)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
