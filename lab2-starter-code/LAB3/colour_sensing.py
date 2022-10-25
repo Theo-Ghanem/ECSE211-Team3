@@ -18,8 +18,8 @@ async def play_note(color_sensor):
 
 def normalizePoint(data_point): 
     added_colors = data_point[0] + data_point[1] + data_point[2]
-    for i in data_point: 
-        data_point[i] = data_point[1]/added_colors 
+    for i in range(3): 
+        data_point[i] = data_point[i]/added_colors 
 
 
 def getColorDistance(color,target):
