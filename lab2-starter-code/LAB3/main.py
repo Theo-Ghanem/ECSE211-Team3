@@ -10,6 +10,8 @@ from utils.brick import Motor, TouchSensor, EV3ColorSensor, wait_ready_sensors
 from time import sleep
 from catapult import *
 from drumming import *
+from utils.sound import Sound
+
 
 motor_left = Motor("A")
 # Set target speed first, 360 deg/sec
@@ -26,12 +28,54 @@ color_sensor = EV3ColorSensor(4)
 
 wait_ready_sensors(True)
 
+tone1 = Sound(duration=1.0, volume=80, pitch="C4")
+
+tone2 = Sound(duration=1.0, volume=80, pitch="D4")
+
+tone3 = Sound(duration=1.0, volume=80, pitch="e4")
+
+tone4 = Sound(duration=1.0, volume=80, pitch="G4")
+
 async def read_button_colour(touch_sensor, motor_left, color_sensor):
     try:
         running = False
         while True:
             sleep(0.01)
             if touch_sensor.is_pressed() and not running:
+   
+                tone3.play()
+                tone2.play()
+                tone1.play()
+                tone2.play()
+                tone3.play()
+                tone3.play()
+                tone3.play()
+                tone2.play()
+                tone2.play()
+                tone2.play()
+
+                tone3.play()
+                tone4.play()
+                tone4.play()
+                
+                await play_note(color_sensor)
+                await launch_cube(motor_left)
+
+                tone3.play()
+                tone2.play()
+                tone1.play()
+                tone2.play()
+                tone3.play()
+                tone3.play()
+                tone3.play()
+                tone3.play()
+
+                tone2.play()
+                tone2.play()
+                tone3.play()
+                tone2.play()
+                tone1.play()
+
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
                 await play_note(color_sensor)
