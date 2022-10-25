@@ -9,7 +9,4 @@ def start_drum(touch_sensor):
     while True:
         tone1 = Sound(duration=1.0, volume=80, pitch="A3")
         tone1.play()
-
-        if touch_sensor.is_pressed():
-            break
         
