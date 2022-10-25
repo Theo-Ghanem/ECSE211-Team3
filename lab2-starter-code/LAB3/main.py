@@ -43,10 +43,9 @@ async def read_button_colour(touch_sensor, motor_left):
 
 async def read_button_drums(touch_sensor):
     try:
-        running = False
         while True:
             sleep(0.01)
-            if touch_sensor.is_pressed() and not running:
+            if touch_sensor.is_pressed():
                 print("Drum button pressed")
                 start_drum()
 
