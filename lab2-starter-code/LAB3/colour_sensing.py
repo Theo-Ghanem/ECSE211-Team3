@@ -9,8 +9,8 @@ colors = (("red",(0.792319061, 0.09501644, 0.112664499)),("green",(0.145115189, 
 async def play_note(color_sensor):
     sleep(1)
     print("doing things")
-    print(data_point)
     data_point = color_sensor.get_value()
+    print(data_point)
     unknown = ("unknown", data_point[0], data_point[1], data_point[2])
     unknown = distance(colors, unknown)
     print(unknown[0])
