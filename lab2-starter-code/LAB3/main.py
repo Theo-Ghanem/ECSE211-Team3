@@ -49,10 +49,9 @@ async def read_button_drums(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed() and not running:
                 print("Drum button pressed")
-                start_drum(touch_sensor)
-                running = True
-            elif not touch_sensor.is_pressed() and running:
-                running = False
+                while True:
+                    tone1 = Sound(duration=1.0, volume=80, pitch="A3")
+                    tone1.play()
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
