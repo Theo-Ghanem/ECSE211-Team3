@@ -50,7 +50,7 @@ async def read_button_drums(touch_sensor):
                 while True:
                     tone1 = Sound(duration=0.1, volume=90, pitch="A3")
                     tone1.play()
-                    sleep(0.1)
+                    sleep(0.2)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
