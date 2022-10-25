@@ -28,13 +28,13 @@ color_sensor = EV3ColorSensor(4)
 
 wait_ready_sensors(True)
 
-tone1 = Sound(duration=1.0, volume=80, pitch="C4")
+tone1 = Sound(duration=0.5, volume=80, pitch="C4")
 
-tone2 = Sound(duration=1.0, volume=80, pitch="D4")
+tone2 = Sound(duration=0.5, volume=80, pitch="D4")
 
-tone3 = Sound(duration=1.0, volume=80, pitch="e4")
+tone3 = Sound(duration=0.5, volume=80, pitch="e4")
 
-tone4 = Sound(duration=1.0, volume=80, pitch="G4")
+tone4 = Sound(duration=0.5, volume=80, pitch="G4")
 
 async def read_button_colour(touch_sensor, motor_left, color_sensor):
     try:
@@ -44,37 +44,89 @@ async def read_button_colour(touch_sensor, motor_left, color_sensor):
             if touch_sensor.is_pressed() and not running:
    
                 tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
                 tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
                 tone1.play()
+                tone1.wait_done() # Will wait until tone1 is done playing
+
                 tone2.play()
-                tone3.play()
-                tone3.play()
-                tone3.play()
-                tone2.play()
-                tone2.play()
-                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
 
                 tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
                 tone4.play()
+                tone4.wait_done() # Will wait until tone1 is done playing
+
                 tone4.play()
+                tone4.wait_done() # Will wait until tone1 is done playing
+
                 
                 await play_note(color_sensor)
                 await launch_cube(motor_left)
 
                 tone3.play()
-                tone2.play()
-                tone1.play()
-                tone2.play()
-                tone3.play()
-                tone3.play()
-                tone3.play()
-                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
 
                 tone2.play()
-                tone2.play()
-                tone3.play()
-                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
                 tone1.play()
+                tone1.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone3.play()
+                tone3.wait_done() # Will wait until tone1 is done playing
+
+                tone2.play()
+                tone2.wait_done() # Will wait until tone1 is done playing
+
+                tone1.play()
+                tone1.wait_done() # Will wait until tone1 is done playing
+
 
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
