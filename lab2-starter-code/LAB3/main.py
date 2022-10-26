@@ -21,6 +21,7 @@ motor_left.reset_encoder()
 ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
+drumTone = Sound(duration=0.1, volume=80, pitch="C2")
 tone1 = Sound(duration=0.5, volume=100, pitch="C4")
 tone2 = Sound(duration=0.5, volume=100, pitch="D4")
 tone3 = Sound(duration=0.5, volume=100, pitch="E4")
@@ -53,7 +54,7 @@ async def read_button_drums(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Drum button pressed")
-                start_drum()
+                start_drum(drumTone)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
