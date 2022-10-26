@@ -55,7 +55,7 @@ async def read_button_drums(touch_sensor):
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Drum button pressed")
-                start_drum(drumTone)
+                await start_drum(drumTone)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
