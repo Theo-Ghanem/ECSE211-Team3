@@ -16,17 +16,19 @@ async def play_note(color_sensor, tone1, tone2, tone3, tone4):
     closest_color = distance(data_point)
     print(data_point,closest_color)
     if closest_color == "red":
+        print("doing things1")
         tone1.play()
-        tone1.wait_done()
+        sleep(.5)
+        print("doing things1 end")
     elif closest_color == "blue":
         tone2.play()
-        tone2.wait_done()
+        sleep(.5)
     elif closest_color == "green":
         tone3.play()
-        tone3.wait_done()
+        sleep(.5)
     else:
         tone4.play()
-        tone4.wait_done()
+        sleep(.5)
     return None
 
 
