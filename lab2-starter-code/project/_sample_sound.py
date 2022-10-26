@@ -21,15 +21,9 @@ volume   - 0.0 to 100.0 but be careful when going to 100%
 pitch    - Either a note name such as 'A3', 'C#5', or 'Gb4'
            OR a frequency number in Hertz: 440, 200, 1, 150.5
 """
-tone1 = Sound(duration=1.0, volume=80, pitch="C4")
+tone1 = Sound(duration=1.0, volume=80, pitch="A3")
 
-
-tone2 = Sound(duration=2.0, volume=80, pitch="D4")
-
-tone2 = Sound(duration=2.0, volume=80, pitch="e4")
-
-tone2 = Sound(duration=2.0, volume=80, pitch="G4")
-
+tone2 = Sound(duration=2.0, volume=80, pitch="A4")
 
 """Now we can use the sound after creation."""
 
