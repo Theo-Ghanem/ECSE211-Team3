@@ -21,6 +21,10 @@ motor_left.reset_encoder()
 ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
+tone1 = Sound(duration=0.5, volume=80, pitch="C4")
+tone2 = Sound(duration=0.5, volume=80, pitch="D4")
+tone3 = Sound(duration=0.5, volume=80, pitch="E4")
+tone4 = Sound(duration=0.5, volume=80, pitch="G4")
 
 color_sensor = EV3ColorSensor(4)
 
@@ -34,7 +38,7 @@ async def read_button_colour(touch_sensor, motor_left, color_sensor):
             if touch_sensor.is_pressed() and not running:
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
-                await play_note(color_sensor)
+                await play_note(color_sensor, tone1, tone2, tone3, tone4)
                 await launch_cube(motor_left)
                 running = True
             elif not touch_sensor.is_pressed():

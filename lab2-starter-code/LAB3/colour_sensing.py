@@ -2,18 +2,31 @@
 
 from this import d
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
+from utils.sound import Sound
 from time import sleep
 import math
 
 colors = (("red",(0.792319061, 0.09501644, 0.112664499)),("green",(0.145115189, 0.619367559, 0.235517252)), ("blue", (0.16760212, 0.27903289, 0.553365)), ("purple", (0.33923691, 0.206862466, 0.453900624)))
 #target will be in the form of a tuple 
-async def play_note(color_sensor):
+async def play_note(color_sensor, tone1, tone2, tone3, tone4):
     sleep(1)
     print("doing things")
     data_point = color_sensor.get_value()
     normalizePoint(data_point)
     closest_color = distance(data_point)
     print(data_point,closest_color)
+    if closest_color == "red":
+        tone1.play()
+        tone1.wait_done()
+    elif closest_color == "blue":
+        tone2.play()
+        tone2.wait_done()
+    elif closest_color == "green":
+        tone3.play()
+        tone3.wait_done()
+    else:
+        tone4.play()
+        tone4.wait_done()
     return None
 
 
