@@ -274,7 +274,7 @@ class Sound:
         return self
 
     def play(self):
-        self.stop()
+        #self.stop()
         self.player = sa.play_buffer(self.audio, 1, 2, self._fs)
         return self
 
