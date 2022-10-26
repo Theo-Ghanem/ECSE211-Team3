@@ -18,17 +18,13 @@ async def play_note(color_sensor, tone1, tone2, tone3, tone4):
     if closest_color == "red":
         print("doing things1")
         tone1.play()
-        sleep(.5)
         print("doing things1 end")
     elif closest_color == "blue":
         tone2.play()
-        sleep(.5)
     elif closest_color == "green":
         tone3.play()
-        sleep(.5)
     else:
         tone4.play()
-        sleep(.5)
     return None
 
 
