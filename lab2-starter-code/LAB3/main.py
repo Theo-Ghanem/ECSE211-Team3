@@ -3,7 +3,7 @@
 import asyncio
 from os import kill
 from threading import Thread
-from multiprocessing import Process
+# from multiprocessing import Process
 
 from utils.sound import Sound
 from colour_sensing import play_note
@@ -40,8 +40,8 @@ async def read_button_colour(touch_sensor, motor_left, color_sensor):
             if touch_sensor.is_pressed() and not running:
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
-               # await play_note(color_sensor, tone1, tone2, tone3, tone4)
-                await launch_cube(motor_left)
+                play_note(color_sensor, tone1, tone2, tone3, tone4)
+                launch_cube(motor_left)
                 running = True
             elif not touch_sensor.is_pressed():
                 running = False
@@ -51,11 +51,14 @@ async def read_button_colour(touch_sensor, motor_left, color_sensor):
 
 async def read_button_drums(touch_sensor):
     try:
+        running = False
         while True:
             sleep(0.01)
-            if touch_sensor.is_pressed():
+            if touch_sensor.is_pressed() and not running:
                 print("Drum button pressed")
-                await start_drum(drumTone)
+                running = True
+                start_drum(drumTone)
+                
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
