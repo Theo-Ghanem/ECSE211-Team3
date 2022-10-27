@@ -30,7 +30,7 @@ def launch_cube_on_button_press():
     except BaseException:
         exit()
 
-async def launch_cube(motor_left):
+def launch_cube(motor_left):
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=0)
     motor_left.set_position_relative(-80)
