@@ -3,7 +3,7 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-async def launch_cube(motor_left):
+def launch_cube(motor_left):
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=0)
     motor_left.set_position_relative(-80)
