@@ -50,11 +50,13 @@ async def read_button_colour(touch_sensor, motor_left, color_sensor):
         exit()
 
 async def read_button_drums(touch_sensor):
+    notPressed = True
     try:
-        while True:
+        while True and notPressed:
             sleep(0.01)
             if touch_sensor.is_pressed():
                 print("Drum button pressed")
+                notPressed = False 
                 start_drum(drumTone)
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
