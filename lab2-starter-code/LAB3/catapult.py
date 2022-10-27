@@ -12,7 +12,7 @@ async def launch_cube(motor_left):
     print("motor_left.set_position_relative(-80)")
 
     print("1")
-    sleep(1)
+    #sleep(1)
     print("2")
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=360)
@@ -21,6 +21,6 @@ async def launch_cube(motor_left):
         sleep(0.1)
     print("motor_left.set_position_relative(80)")
 
-    sleep(1)
+    #sleep(1)
     motor_left.set_power(0)  # always do 0% to stop motor
     print("motor_left.set_power(0)")
