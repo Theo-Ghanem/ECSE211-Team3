@@ -34,17 +34,17 @@ wait_ready_sensors(True)
 
 async def read_button_colour(touch_sensor, motor_left, color_sensor):
     try:
-        running = False
+        # running = False
         while True:
             sleep(0.01)
-            if touch_sensor.is_pressed() and not running:
+            if touch_sensor.is_pressed():
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
                 play_note(color_sensor, tone1, tone2, tone3, tone4)
                 launch_cube(motor_left)
-                running = True
-            elif not touch_sensor.is_pressed():
-                running = False
+            #     running = True
+            # elif not touch_sensor.is_pressed():
+            #     running = False
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
