@@ -3,7 +3,6 @@
 import asyncio
 from os import kill
 from threading import Thread
-# from multiprocessing import Process
 
 from utils.sound import Sound
 from colour_sensing import play_note
@@ -22,11 +21,6 @@ motor_left.reset_encoder()
 ts_colour = TouchSensor(1)
 ts_drums = TouchSensor(2)
 ts_stop = TouchSensor(3)
-drumTone = Sound(duration=0.1, volume=80, pitch="C2")
-tone1 = Sound(duration=0.1, volume=100, pitch="C4")
-tone2 = Sound(duration=0.1, volume=100, pitch="D4")
-tone3 = Sound(duration=0.1, volume=100, pitch="E4")
-tone4 = Sound(duration=0.1, volume=100, pitch="G4")
 
 color_sensor = EV3ColorSensor(4)
 
@@ -34,31 +28,28 @@ wait_ready_sensors(True)
 
 async def read_button_colour(touch_sensor, motor_left, color_sensor):
     try:
-        # running = False
+        running = False
         while True:
             sleep(0.01)
-            if touch_sensor.is_pressed():
+            if touch_sensor.is_pressed() and not running:
                 print("Colour button pressed")
                 # Read colour, wait till done then launch cube
-                play_note(color_sensor, tone1, tone2, tone3, tone4)
-                launch_cube(motor_left)
-            #     running = True
-            # elif not touch_sensor.is_pressed():
-            #     running = False
+                await play_note(color_sensor)
+                await launch_cube(motor_left)
+                running = True
+            elif not touch_sensor.is_pressed():
+                running = False
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
         exit()
 
 async def read_button_drums(touch_sensor):
     try:
-        running = False
         while True:
             sleep(0.01)
-            if touch_sensor.is_pressed() and not running:
+            if touch_sensor.is_pressed():
                 print("Drum button pressed")
-                running = True
-                start_drum(drumTone)
-                
+                start_drum()
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
@@ -97,7 +88,6 @@ if __name__ == '__main__':
         exit()
     except BaseException:
         exit()
-
 
 
 
