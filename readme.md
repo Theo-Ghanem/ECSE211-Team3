@@ -27,7 +27,7 @@ Below is setup information to connect to BrickPi #05. Changing the 5 for a 6 in 
 ### Connecting to the BrickPi
 
 In your computer's terminal, run the following:
-```Bash
+```bash
 ssh pi@dpm-05.local
 ```
 When prompted for a password, enter: `robots1234`
@@ -35,11 +35,11 @@ When prompted for a password, enter: `robots1234`
 
 ### Adding the BrickPi as a git remote
 In your git repository, run the following on your computer's terminal:
-```Bash
+```bash
 git add remote brick5 pi@dpm-05.local:ecse211
 ```
 Additionally, you can verify your remotes:
-```Bash
+```bash
 git remote -v
 ```
 
