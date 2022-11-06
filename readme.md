@@ -5,12 +5,13 @@
 __Team:__ 3  
 
 __Members:__
-- David Breton
-- Mathieu Geoffroy
-- Theo Ghanem
-- Sabrina Mansour
-- Sehr Moosabhoy
-- Ryan Reszetnik
+- David Breton - 260986087
+- Mathieu Geoffroy - 260986559
+- Theo Ghanem - 260972584
+- Sabrina Mansour - 260945807
+- Sehr Moosabhoy - 260983946
+- Ryan Reszetnik - 260948454
+
 
 __DPM Kits:__ 05 and 06
 
