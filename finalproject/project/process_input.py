@@ -80,7 +80,7 @@ async def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, tou
                 running_ts_0 = False
                 running_ts_1 = False
                 while True:
-                    sleep(0.01)
+                    await sleep(0.01)
                     if touch_sensor_0.is_pressed() and not running_ts_0:
                         print("0", end=" ")
                         grid[i][j] = "0"
