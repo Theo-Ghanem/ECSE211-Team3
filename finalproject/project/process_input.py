@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from asyncio import sleep
-import sys
+from utils.brick import TouchSensor
 
 def reprint_partial_grid(grid):
     print("Enter a list of 25 binary inputs with spaces as delimiters: ")
@@ -15,17 +15,24 @@ def reprint_partial_grid(grid):
 def validate_grid(grid, verbose):
     if verbose:
         print("Validating grid...")
-    count = 0
+    count_1 = 0
+    count_total = 0
     for row in grid:
         for cell in row:
             if cell == "1" :
-                count += 1
-    if count != 15:
-        print("Invalid grid. Please enter a grid with 15 1's and 10 0's.")
+                count_1 += 1
+                count_total += 1
+            elif cell == "0":
+                count_total += 1
+    if count_1 > 15:
+        print("Invalid grid. Please enter a grid with at most 15 1's.")
+        exit()
+    elif count_total != 25:
+        print("Invalid grid. Please enter 25 binary inputs.")
         exit()
     elif verbose:
         print("Grid is valid.\n")
-    return count == 15
+    return count_1 <= 15 and count_total == 25
 
 def print_grid(grid):
     print("\nThe robot will place cubes at the following locations:")
@@ -64,29 +71,34 @@ def collect_grid_terminal_input(grid):
         grid.append(array)
     print("\n")
 
-def collect_grid_touch_sensor_input(grid, touch_sensor_0, touch_sensor_1, verbose):
+async def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sensor_1: TouchSensor, verbose):
     try:
-        for i in range(0, 4):
-            for j in range(0, 4):
-
-                running = False
+        print (" v v v v v")
+        for i in range(0, 5):
+            print("> ", end="")
+            for j in range(0, 5):
+                running_ts_0 = False
+                running_ts_1 = False
                 while True:
                     sleep(0.01)
-                    if touch_sensor_0.is_pressed() and not running:
-                        if (verbose):
-                            print("Touch sensor 0 pressed")
+                    if touch_sensor_0.is_pressed() and not running_ts_0:
+                        print("0", end=" ")
                         grid[i][j] = "0"
-                        running = True
+                        running_ts_0 = True
                     elif not touch_sensor_0.is_pressed():
                         break
 
-                    elif touch_sensor_1.is_pressed() and not running:
-                        if (verbose):
-                            print("Touch sensor 1 pressed")
+                    if touch_sensor_1.is_pressed() and not running_ts_1:
+                        if running_ts_0:
+                            print("Aborting input")
+                            exit()
+                        print("1", end=" ")
                         grid[i][j] = "1"
-                        running = True
+                        running_ts_1 = True
                     elif not touch_sensor_1.is_pressed():
                         break
+            print("\n", end="")
+        print("\n", end="")
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
