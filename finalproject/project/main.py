@@ -48,6 +48,7 @@ if __name__ == '__main__':
     else:
         collect_grid_touch_sensor_input(grid, touch_sensor_0, touch_sensor_1, verbose)
 
+    print(grid)
 
     validate_grid(grid, verbose)
     print_grid(grid)

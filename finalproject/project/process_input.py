@@ -73,9 +73,9 @@ def collect_grid_terminal_input(grid):
 
 def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sensor_1: TouchSensor, verbose):
     try:
-        print (" v v v v v")
+        print ("  v v v v v")
         for i in range(0, 5):
-            print(">", end="")
+            print("> ", end="")
             for j in range(0, 5):
                 row = []
                 running_ts_0 = False
