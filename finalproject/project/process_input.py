@@ -88,6 +88,8 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         grid[i][j] = "0"
                         running_ts_0 = True
                         break
+                    elif not touch_sensor_0.is_pressed():
+                        running_ts_0 = False
                         
 
                     if touch_sensor_1.is_pressed() and not running_ts_1:
@@ -98,10 +100,14 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         grid[i][j] = "1"
                         running_ts_1 = True
                         break
+                    elif not touch_sensor_1.is_pressed():
+                        running_ts_1 = False
+
                         
             print("\n", end="")
         print("\n", end="")
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException:
+        print("error")
         exit()
