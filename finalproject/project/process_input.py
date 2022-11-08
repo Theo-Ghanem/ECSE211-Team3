@@ -75,11 +75,13 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
     try:
         print (" v v v v v")
         for i in range(0, 5):
-            print("> ", end="")
+            print(">", end="")
             for j in range(0, 5):
                 running_ts_0 = False
                 running_ts_1 = False
+                print(f"{i}, {j}")
                 while True:
+                    print("checking")
                     sleep(0.01)
                     if touch_sensor_0.is_pressed() and not running_ts_0:
                         print("0", end=" ")
