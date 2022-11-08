@@ -85,8 +85,8 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         print("0", end=" ")
                         grid[i][j] = "0"
                         running_ts_0 = True
-                    elif not touch_sensor_0.is_pressed():
                         break
+                        
 
                     if touch_sensor_1.is_pressed() and not running_ts_1:
                         if running_ts_0:
@@ -95,8 +95,8 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         print("1", end=" ")
                         grid[i][j] = "1"
                         running_ts_1 = True
-                    elif not touch_sensor_1.is_pressed():
                         break
+                        
             print("\n", end="")
         print("\n", end="")
 
