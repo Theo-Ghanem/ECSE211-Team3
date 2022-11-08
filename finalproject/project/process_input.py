@@ -108,6 +108,7 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
         print("\n", end="")
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
-    except BaseException:
+    except BaseException as e:
+        print(e)
         print("error")
         exit()
