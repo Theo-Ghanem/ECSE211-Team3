@@ -41,7 +41,7 @@ if __name__ == '__main__':
     wait_ready_sensors(verbose)
 
     # Collect input from the user
-    grid = [5][5]
+    grid = []
 
     if debug:
         collect_grid_terminal_input(grid)
