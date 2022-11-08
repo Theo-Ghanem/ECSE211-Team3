@@ -46,9 +46,8 @@ if __name__ == '__main__':
     if debug:
         collect_grid_terminal_input(grid)
     else:
-        sensor_thread = Thread(target=run, args=(collect_grid_touch_sensor_input(grid, touch_sensor_0, touch_sensor_1, verbose),))
-        sensor_thread.start()
-        sensor_thread.join()
+        collect_grid_touch_sensor_input(grid, touch_sensor_0, touch_sensor_1, verbose)
+
 
     validate_grid(grid, verbose)
     print_grid(grid)

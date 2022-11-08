@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from asyncio import sleep
+from time import sleep
 from utils.brick import TouchSensor
 
 def reprint_partial_grid(grid):
@@ -71,7 +71,7 @@ def collect_grid_terminal_input(grid):
         grid.append(array)
     print("\n")
 
-async def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sensor_1: TouchSensor, verbose):
+def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sensor_1: TouchSensor, verbose):
     try:
         print (" v v v v v")
         for i in range(0, 5):
@@ -80,7 +80,7 @@ async def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, tou
                 running_ts_0 = False
                 running_ts_1 = False
                 while True:
-                    await sleep(0.01)
+                    sleep(0.01)
                     if touch_sensor_0.is_pressed() and not running_ts_0:
                         print("0", end=" ")
                         grid[i][j] = "0"
