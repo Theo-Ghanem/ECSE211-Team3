@@ -76,8 +76,8 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
         print ("  v v v v v")
         for i in range(0, 5):
             print("> ", end="")
+            row = []
             for j in range(0, 5):
-                row = []
                 running_ts_0 = False
                 running_ts_1 = False
                 while True:
@@ -96,13 +96,13 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         #     print("Aborting input")
                         #     exit()
                         print("1", end=" ")
-                        row.append("0")
+                        row.append("1")
                         running_ts_1 = True
                     elif not touch_sensor_1.is_pressed() and running_ts_1:
                         running_ts_1 = False
                         break
-                print(row)
-                grid.append(row)
+            print(row)
+            grid.append(row)
 
                         
             print("\n", end="")
