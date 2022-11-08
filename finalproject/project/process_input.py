@@ -91,7 +91,7 @@ def collect_grid_touch_sensor_input(grid, touch_sensor_0: TouchSensor, touch_sen
                         break
                         
 
-                    if touch_sensor_1.is_pressed() and not running_ts_1:
+                    elif touch_sensor_1.is_pressed() and not running_ts_1:
                         # if running_ts_0:
                         #     print("Aborting input")
                         #     exit()
