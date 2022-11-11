@@ -8,15 +8,15 @@ motor_left = Motor("A") #remove this after
 def launch_cube(motor_left):
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=100)
-    motor_left.set_position_relative(80)
+    motor_left.set_position_relative(100)
     while motor_left.is_moving():
         sleep(0.1)
     print("motor_left.set_position_relative(-80)")
 
-    sleep(1)
+    sleep(2)
     # command to rotate 80deg away from current position
     motor_left.set_limits(dps=100)
-    motor_left.set_position_relative(-80)
+    motor_left.set_position_relative(-100)
     while motor_left.is_moving():
         sleep(0.1)
     print("motor_left.set_position_relative(80)")
