@@ -42,7 +42,9 @@ The following arguments can be applied:
 
 ## Setup
 
-Below is setup information to connect to BrickPi #05. Changing the 5 for a 6 in the commands will do the same for BrickPi #06.
+Below is setup information to connect to BrickPi #05. Changing the 5 for a 6 in the commands will do the same for BrickPi #06.  
+
+__Note:__ To interact with the BrickPi, connect to its wifi.
 
 ### Connecting to the BrickPi
 
