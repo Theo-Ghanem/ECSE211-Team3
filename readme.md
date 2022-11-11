@@ -17,9 +17,28 @@ __DPM Kits:__ 05 and 06
 
 ## Project Files
 
-Our __mini project__ lab 3 code can be found at `/miniproject/LAB3/main.py`.
+### Mini Project
+Our __mini project__ lab 3 code can be found at `/miniproject/LAB3/`.
 
-Our __final project__ code can be found at `/finalproject/project/main.py`.
+To run the code:
+```bash
+python3 main.py
+```
+
+### Final Project
+Our __final project__ code can be found at `/finalproject/project/`.
+
+To run the code:
+```bash
+python3 main.py
+```
+The following arguments can be applied:  
+| Argument | Action| Description |  
+|:--------:|:-----:|-------------|
+| -v | Verbose | Adds additional terminal print statements to understand the state of the program and the decision making. | 
+| -d | Debug   | Enter inputs in the terminal instead of through the touch sensors on the BrickPi. |  
+  
+
 
 ## Setup
 
