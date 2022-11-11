@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from asyncio import run
 import sys
-from threading import Thread
 
-from process_input import collect_grid_terminal_input, validate_grid, print_grid, collect_grid_touch_sensor_input
+from process_input import (collect_grid_terminal_input,
+                           collect_grid_touch_sensor_input, print_grid,
+                           validate_grid)
 from utils.brick import TouchSensor, wait_ready_sensors
 
 if __name__ == '__main__':

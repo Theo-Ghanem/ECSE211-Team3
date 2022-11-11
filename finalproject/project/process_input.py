@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 from time import sleep
+
 from utils.brick import TouchSensor
+
 
 def reprint_partial_grid(grid):
     print("Enter a list of 25 binary inputs with spaces as delimiters: ")
@@ -52,7 +54,7 @@ def collect_grid_terminal_input(grid):
     grid_input = ""
     input_lines = 0
 
-    print("Enter a list of 25 binary inputs with spaces as delimiters: ")
+    print("\nEnter a list of 25 binary inputs with spaces as delimiters: ")
     print("  v v v v v")
     while input_lines < 5:
         while not valid_input:
