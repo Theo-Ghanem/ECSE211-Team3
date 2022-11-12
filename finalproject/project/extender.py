@@ -54,7 +54,7 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
 
         counter += 1
     if (atLeast1Cube):  # If there is no cube then no need to push the column
-        pushColumn(motor_column, iteration)
+        pushColumn(motor_column, iteration, verbose)
 
 
 def pushColumn(motor_column, iteration, verbose):
