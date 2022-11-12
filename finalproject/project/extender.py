@@ -8,6 +8,7 @@ motor_column = Motor("B")  # remove this after
 
 # constants for row distance:
 row_distance = [140, 110, 90, 80, 60]
+column_distance = [140, 110, 90, 80, 60]  # probably will be different than row
 
 grid = [
     [1, 1, 1, 1, 1],
@@ -19,9 +20,9 @@ grid = [
 
 
 def pushRow(motor_row, grid, iteration):
-    # command to rotate 140deg away from current position
 
-    motor_row.set_limits(dps=80)
+    motor_row.set_limits(dps=80)  # speed of motor
+    # make sure the motor is in correct position at start!
     motorStartPosition = motor_row.get_position()
 
     counter = 0
@@ -33,7 +34,7 @@ def pushRow(motor_row, grid, iteration):
             motor_row.set_position(motorStartPosition + distance)
             while motor_row.is_moving():
                 sleep(0.1)
-            print("extender extend's to row" + str(abs(counter-5)))
+            print("extender extend's to row " + str(abs(counter-5)))
 
             sleep(2)  # wait before retracting
 
@@ -41,34 +42,38 @@ def pushRow(motor_row, grid, iteration):
             motor_row.set_position(motorStartPosition)
             while motor_row.is_moving():
                 sleep(0.1)
-            print("extender retract's from row" + str(abs(counter-5)))
+            print("extender retract's from row " + str(abs(counter-5)))
 
-            print("Waiting for cube " + str(counter) + "to load")
+            print("Waiting for cube " + str(counter) + " to load")
             sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
+    pushColumn(motor_column, iteration)
 
 
-def pushColumn(motor_column):
-    # command to rotate 80deg away from current position
-    motor_column.set_limits(dps=100)
+def pushColumn(motor_column, iteration):
+    motor_column.set_limits(dps=80)  # speed of motor
+    # make sure the motor is in correct position at start!
     motorStartPosition = motor_column.get_position()
-    motor_column.set_position(motorStartPosition + 140)
+
+    distance = column_distance[iteration]
+
+    # make extender extend
+    motor_column.set_position(motorStartPosition + distance)
     while motor_column.is_moving():
         sleep(0.1)
-    print("motor_column.set_position (motorStartPosition + 140)")
+    print("wall extend's to column " + str(abs(iteration-5)))
 
-    sleep(2)
-    # command to rotate 80deg away from current position
-    motor_column.set_limits(dps=100)
+    sleep(2)  # wait before retracting
+
+    # make extender retract
     motor_column.set_position(motorStartPosition)
     while motor_column.is_moving():
         sleep(0.1)
-    print("motor_left.set_position(motorStartPosition)")
+    print("wall retract's from column " + str(abs(iteration-5)))
 
-    sleep(1)
-    motor_column.set_power(0)  # always do 0% to stop motor
-    print("motor_left.set_power(0)")
+    print("Waiting for next row to be done")
+    sleep(3)  # wait 3 seconds then exit
 
 
 if __name__ == '__main__':
