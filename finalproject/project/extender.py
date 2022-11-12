@@ -7,7 +7,7 @@ motor_row = Motor("A")  # remove this after
 motor_column = Motor("B")  # remove this after
 
 # constants for row distance:
-row_distance = [140, 120, 100, 80, 60]
+row_distance = [140, 100, 60, 20, 10]
 
 grid = [
     [1, 1, 1, 1, 1],
@@ -43,7 +43,7 @@ def pushRow(motor_row, grid, iteration):
                 sleep(0.1)
             print("motor_column.set_position(motorStartPosition)")
 
-            sleep(2)
+            sleep(5)
             # motor_row.set_power(0)  # always do 0% to stop motor
             # print("motor_left.set_power(0)")
 
