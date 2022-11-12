@@ -30,7 +30,7 @@ def pushRow(motor_row, grid, iteration):
             distance = row_distance[counter]
 
             # make extender extend
-            motor_row.set_position(motorStartPosition + 140)
+            motor_row.set_position(motorStartPosition + distance)
             while motor_row.is_moving():
                 sleep(0.1)
             print("motor_row.set_position(motorStartPosition + distance)")
