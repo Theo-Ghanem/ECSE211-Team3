@@ -63,5 +63,4 @@ if __name__ == '__main__':
 
     # Run the program
     for iteration in range(5):
-        pushRow(motor_row, motor_column, grid, iteration, True)
-        # pushColumn(motor_column, iteration, True)
+        pushRow(motor_row, motor_column, grid, iteration, verbose)
