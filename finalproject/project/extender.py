@@ -26,7 +26,7 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
     motorStartPosition = motor_row.get_position()
     print("do you get here")
     counter = 0
-    # atLeast1Cube = False
+    atLeast1Cube = False
     for i in grid[iteration]:
         if i == 1:
             print("1")
@@ -55,9 +55,9 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
             sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
-    # if (atLeast1Cube):  # If there is no cube then no need to push the column
-    print("what about here")
-    pushColumn(motor_column, iteration, verbose)
+    if (atLeast1Cube):  # If there is no cube then no need to push the column
+        print("what about here")
+        pushColumn(motor_column, iteration, verbose)
 
 
 def pushColumn(motor_column, iteration, verbose):
