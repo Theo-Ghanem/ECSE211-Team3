@@ -62,7 +62,5 @@ if __name__ == '__main__':
         input("Press enter to proceed...")
 
     # Run the program
-    print("hello?")
-    # for iteration in range(5):
-    #     print("are you in here ?")
-    pushRow(motor_row, motor_column, grid, 0, verbose)
+    for iteration in range(5):
+        pushRow(motor_row, motor_column, grid, iteration, verbose)
