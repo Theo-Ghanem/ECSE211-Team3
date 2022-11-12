@@ -9,7 +9,7 @@ motor_column = Motor("B")  # remove this after
 # constants for row distance:
 
 
-row_distance = [60, 80, 100, 120, 140]
+row_distance = [140, 120, 100, 80, 60]
 
 grid = [
     [1, 1, 1, 1, 1],
