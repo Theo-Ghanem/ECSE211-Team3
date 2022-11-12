@@ -7,7 +7,7 @@ from process_input import (collect_grid_terminal_input,
                            validate_grid)
 from utils.brick import TouchSensor, Motor, wait_ready_sensors
 
-from extender import pushRow
+from extender import pushRow, pushColumn
 
 
 if __name__ == '__main__':
@@ -64,3 +64,4 @@ if __name__ == '__main__':
     # Run the program
     for iteration in range(5):
         pushRow(motor_row, motor_column, grid, iteration, verbose)
+        pushColumn(motor_column, iteration, True)
