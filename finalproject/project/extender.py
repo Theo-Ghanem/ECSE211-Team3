@@ -15,8 +15,8 @@ from time import sleep
 # ]
 
 # constants for row distance:
-row_distance = [140, 110, 90, 80, 60]
-column_distance = [140, 110, 90, 80, 60]  # probably will be different than row
+row_distance = [130, 110, 90, 80, 60]
+column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 
 
 def pushRow(motor_row, motor_column, grid, iteration, verbose):
