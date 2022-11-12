@@ -96,7 +96,7 @@ if __name__ == '__main__':
             collect_grid_touch_sensor_input(
                 grid, touch_sensor_0, touch_sensor_1, verbose)
 
-        convert_grid_to_int(grid)
+        grid = convert_grid_to_int(grid)
         
     else:
         grid = preloaded_grid

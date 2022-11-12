@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from utils.brick import Motor, TouchSensor, wait_ready_sensors
+from utils.brick import Motor
 from time import sleep
 
 # FOR TESTING
@@ -29,7 +29,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
     for i in grid[iteration]:
         if i == 1:
             at_least_one_cube = True
-            if (verbose):
+            if verbose:
                 print("Cube " + str(counter+1) + " is loaded")
             distance = row_distance[counter]
 
@@ -37,7 +37,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
             motor_row.set_position(motor_start_position + distance)
             while motor_row.is_moving():
                 sleep(0.1)
-            if (verbose):
+            if verbose:
                 print("Extender extend's to row " + str(abs(counter-5)))
 
             sleep(2)  # wait before retracting
@@ -46,17 +46,16 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
             motor_row.set_position(motor_start_position)
             while motor_row.is_moving():
                 sleep(0.1)
-            if (verbose):
+            if verbose:
                 print("Extender retract's from row " + str(abs(counter-5)))
 
             sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
     if (at_least_one_cube):  # If there is no cube then no need to push the column
-        motor_column = Motor("B")  # remove this after
         push_column(motor_column, 0, True)
     else:
-        if (verbose):
+        if verbose:
             print("Skipping column " + str(abs(iteration-5)) +
                   " because no cubes to push\n")
 
@@ -74,7 +73,7 @@ def push_column(motor_column, iteration, verbose):
     motor_column.set_position(motor_start_position + distance)
     while motor_column.is_moving():
         sleep(0.1)
-    if (verbose):
+    if verbose:
         print("Wall extend's to column " + str(abs(iteration-5)))
 
     sleep(2)  # wait before retracting
@@ -83,9 +82,9 @@ def push_column(motor_column, iteration, verbose):
     motor_column.set_position(motor_start_position)
     while motor_column.is_moving():
         sleep(0.1)
-    if (verbose):
+    if verbose:
         print("Wall retract's from column " + str(abs(iteration-5)))
 
-    if (verbose):
+    if verbose:
         print("Waiting for next row to be done\n")
     sleep(3)  # wait 3 seconds then exit
