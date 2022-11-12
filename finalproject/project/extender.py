@@ -6,26 +6,50 @@ from time import sleep
 motor_row = Motor("A")  # remove this after
 motor_column = Motor("B")  # remove this after
 
+# constants for row distance:
 
-def pushRow(motor_row):
-    # command to rotate 80deg away from current position
+
+row_distance = [60, 80, 100, 120, 140]
+
+grid = [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+]
+
+
+def pushRow(motor_row, grid, iteration):
+    # command to rotate 140deg away from current position
+
     motor_row.set_limits(dps=100)
-    motor_row.set_position_relative(140)
-    while motor_row.is_moving():
-        sleep(0.1)
-    print("motor_left.set_position_relative(-140)")
+    motorStartPosition = motor_row.get_position()
 
-    sleep(2)
-    # command to rotate 80deg away from current position
-    motor_row.set_limits(dps=100)
-    motor_row.set_position_relative(-140)
-    while motor_row.is_moving():
-        sleep(0.1)
-    print("motor_left.set_position_relative(140)")
+    counter = 0
+    for i in grid[iteration]:
+        if i == 1:
+            distance = row_distance[counter]
 
-    sleep(1)
-    motor_row.set_power(0)  # always do 0% to stop motor
-    print("motor_left.set_power(0)")
+            # make extender extend
+            motor_row.set_position(motorStartPosition + distance)
+            while motor_row.is_moving():
+                sleep(0.1)
+            print("motor_row.set_position(motorStartPosition + 140)")
+            sleep(2)  # wait before retracting
+
+            # make extender retract
+            motor_row.set_limits(dps=100)
+            motor_column.set_position(motorStartPosition)
+            while motor_row.is_moving():
+                sleep(0.1)
+            print("motor_column.set_position(motorStartPosition)")
+
+            sleep(1)
+            motor_row.set_power(0)  # always do 0% to stop motor
+            print("motor_left.set_power(0)")
+
+        counter += 1
 
 
 def pushColumn(motor_column):
@@ -51,4 +75,5 @@ def pushColumn(motor_column):
 
 
 if __name__ == '__main__':
-    pushColumn(motor_row)
+    pushRow(motor_row, grid, 0)
+    # pushColumn(motor_row)
