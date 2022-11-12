@@ -21,7 +21,7 @@ grid = [
 def pushRow(motor_row, grid, iteration):
     # command to rotate 140deg away from current position
 
-    motor_row.set_limits(dps=100)
+    motor_row.set_limits(dps=80)
     motorStartPosition = motor_row.get_position()
 
     counter = 0
