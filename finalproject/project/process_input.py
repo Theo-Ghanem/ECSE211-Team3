@@ -21,10 +21,10 @@ def validate_grid(grid, verbose):
     count_total = 0
     for row in grid:
         for cell in row:
-            if cell == "1" :
+            if cell == 1 :
                 count_1 += 1
                 count_total += 1
-            elif cell == "0":
+            elif cell == 0:
                 count_total += 1
     if count_1 > 15:
         print("Invalid grid. Please enter a grid with at most 15 1's.")
@@ -41,13 +41,22 @@ def print_grid(grid):
     print("+---+---+---+---+---+")
     for row in grid:
         for cell in row:
-            if cell == "1":
+            if cell == 1:
                 print(f"| X ", end="")
             else:
                 print(f"|   ", end="")
         print("|\n", end="")
         print("+---+---+---+---+---+")
     print("\n")
+
+def convert_grid_to_int(grid):
+    grid_int = []
+    for row in grid:
+        row_int = []
+        for cell in row:
+            row_int.append(int(cell))
+        grid_int.append(row_int)
+    return grid_int
 
 def collect_grid_terminal_input(grid):
     valid_input = False
