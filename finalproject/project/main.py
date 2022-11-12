@@ -9,8 +9,6 @@ from utils.brick import TouchSensor, Motor, wait_ready_sensors
 
 from extender import pushRow
 
-motor_row = Motor("A")  # Motor for the row pusher is in port A
-motor_column = Motor("B")  # Motor for the column pusher is in port B
 
 if __name__ == '__main__':
     # Debug mode includes terminal binary input
@@ -42,6 +40,8 @@ if __name__ == '__main__':
     # Initialise the sensors
     touch_sensor_0 = TouchSensor(1)
     touch_sensor_1 = TouchSensor(2)
+    motor_row = Motor("A")  # Motor for the row pusher is in port A
+    motor_column = Motor("B")  # Motor for the column pusher is in port B
 
     wait_ready_sensors(verbose)
 
@@ -64,4 +64,5 @@ if __name__ == '__main__':
     # Run the program
     print("hello?")
     for iteration in range(5):
+        print("are you in here ?")
         pushRow(motor_row, motor_column, grid, iteration, verbose)
