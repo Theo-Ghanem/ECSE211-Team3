@@ -33,19 +33,17 @@ def pushRow(motor_row, grid, iteration):
             motor_row.set_position(motorStartPosition + distance)
             while motor_row.is_moving():
                 sleep(0.1)
-            print("motor_row.set_position(motorStartPosition + distance)")
+            print("extender extend's to row" + abs(counter-5))
+
             sleep(2)  # wait before retracting
 
             # make extender retract
-            # motor_row.set_limits(dps=100)
             motor_row.set_position(motorStartPosition)
             while motor_row.is_moving():
                 sleep(0.1)
-            print("motor_column.set_position(motorStartPosition)")
+            print("extender retract's from row" + abs(counter-5))
 
-            sleep(5)
-            # motor_row.set_power(0)  # always do 0% to stop motor
-            # print("motor_left.set_power(0)")
+            sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
 
