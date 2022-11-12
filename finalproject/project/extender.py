@@ -58,12 +58,12 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
     else:
         if (verbose):
             print("Skipping column " + str(abs(iteration-5)) +
-                  " because no cubes to push")
+                  " because no cubes to push\n")
 
 
 def push_column(motor_column, iteration, verbose):
     if (verbose):
-        print("Pushing wall to column " + str(abs(iteration-5)))
+        print("\nPushing wall to column " + str(abs(iteration-5)))
     motor_column.set_limits(dps=80)  # speed of motor
 
     # make sure the motor is in correct position at start!
@@ -76,7 +76,7 @@ def push_column(motor_column, iteration, verbose):
     while motor_column.is_moving():
         sleep(0.1)
     if (verbose):
-        print("wall extend's to column " + str(abs(iteration-5)))
+        print("Wall extend's to column " + str(abs(iteration-5)))
 
     sleep(2)  # wait before retracting
 
@@ -85,7 +85,7 @@ def push_column(motor_column, iteration, verbose):
     while motor_column.is_moving():
         sleep(0.1)
     if (verbose):
-        print("wall retract's from column " + str(abs(iteration-5)))
+        print("Wall retract's from column " + str(abs(iteration-5)) + "\n")
 
     if (verbose):
         print("Waiting for next row to be done")
