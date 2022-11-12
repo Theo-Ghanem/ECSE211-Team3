@@ -85,8 +85,8 @@ def push_column(motor_column, iteration, verbose):
     while motor_column.is_moving():
         sleep(0.1)
     if (verbose):
-        print("Wall retract's from column " + str(abs(iteration-5)) + "\n")
+        print("Wall retract's from column " + str(abs(iteration-5)))
 
     if (verbose):
-        print("Waiting for next row to be done")
+        print("Waiting for next row to be done\n")
     sleep(3)  # wait 3 seconds then exit

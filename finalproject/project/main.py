@@ -109,5 +109,7 @@ if __name__ == '__main__':
         input("Press enter to proceed...")
 
     # Run the program
+    if verbose:
+        print("\nStarting pistons...\n")
     for iteration in range(5):
         push_row(motor_row, motor_column, grid, iteration, verbose)
