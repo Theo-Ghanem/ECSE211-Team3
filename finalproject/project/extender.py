@@ -23,7 +23,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
 
     motor_row.set_limits(dps=80)  # speed of motor
     # make sure the motor is in correct position at start!
-    motoer_start_position = motor_row.get_position()
+    motor_start_position = motor_row.get_position()
     counter = 0
     at_least_one_cube = False
     for i in grid[iteration]:
@@ -34,7 +34,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
             distance = row_distance[counter]
 
             # make extender extend
-            motor_row.set_position(motoer_start_position + distance)
+            motor_row.set_position(motor_start_position + distance)
             while motor_row.is_moving():
                 sleep(0.1)
             if (verbose):
@@ -43,7 +43,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
             sleep(2)  # wait before retracting
 
             # make extender retract
-            motor_row.set_position(motoer_start_position)
+            motor_row.set_position(motor_start_position)
             while motor_row.is_moving():
                 sleep(0.1)
             if (verbose):
@@ -66,12 +66,12 @@ def push_column(motor_column, iteration, verbose):
     motor_column.set_limits(dps=80)  # speed of motor
 
     # make sure the motor is in correct position at start!
-    motoer_start_position = motor_column.get_position()
+    motor_start_position = motor_column.get_position()
 
     distance = column_distance[iteration]
 
     # make extender extend
-    motor_column.set_position(motoer_start_position + distance)
+    motor_column.set_position(motor_start_position + distance)
     while motor_column.is_moving():
         sleep(0.1)
     if (verbose):
@@ -80,7 +80,7 @@ def push_column(motor_column, iteration, verbose):
     sleep(2)  # wait before retracting
 
     # make extender retract
-    motor_column.set_position(motoer_start_position)
+    motor_column.set_position(motor_start_position)
     while motor_column.is_moving():
         sleep(0.1)
     if (verbose):
