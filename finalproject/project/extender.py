@@ -3,20 +3,20 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-# motor_row = Motor("A")  # remove this after
-# motor_column = Motor("B")  # remove this after
+motor_row = Motor("A")  # remove this after
+motor_column = Motor("B")  # remove this after
 
 # constants for row distance:
 row_distance = [140, 110, 90, 80, 60]
 column_distance = [140, 110, 90, 80, 60]  # probably will be different than row
 
-# grid = [
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1]
-# ]
+grid = [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+]
 
 
 def pushRow(motor_row, motor_column, grid, iteration, verbose):
@@ -90,6 +90,6 @@ def pushColumn(motor_column, iteration, verbose):
     sleep(3)  # wait 3 seconds then exit
 
 
-# if __name__ == '__main__':
-#     pushRow(motor_row, grid, 0)
-#     # pushColumn(motor_row)
+if __name__ == '__main__':
+    for iteration in range(5):
+        pushRow(motor_row, motor_column, grid, iteration, True)
