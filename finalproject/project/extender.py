@@ -73,5 +73,5 @@ def pushColumn(motor_column):
 
 
 if __name__ == '__main__':
-    # pushRow(motor_row, grid, 0)
-    pushColumn(motor_row)
+    pushRow(motor_row, grid, 0)
+    # pushColumn(motor_row)
