@@ -3,20 +3,20 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-# motor_row = Motor("A")  # remove this after
-# motor_column = Motor("B")  # remove this after
+motor_row = Motor("A")  # remove this after
+motor_column = Motor("B")  # remove this after
 
 # constants for row distance:
 row_distance = [140, 110, 90, 80, 60]
 column_distance = [140, 110, 90, 80, 60]  # probably will be different than row
 
-# grid = [
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 1, 1, 1]
-# ]
+grid = [
+    [1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+]
 
 
 def pushRow(motor_row, motor_column, grid, iteration, verbose):
@@ -56,7 +56,7 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
 
         counter += 1
     if (atLeast1Cube):  # If there is no cube then no need to push the column
-        print("what about here")
+        print("did not skip column " + str(iteration))
         pushColumn(motor_column, iteration, verbose)
 
 
@@ -90,6 +90,6 @@ def pushColumn(motor_column, iteration, verbose):
     sleep(3)  # wait 3 seconds then exit
 
 
-# if __name__ == '__main__':
-#     for iteration in range(5):
-#         pushRow(motor_row, motor_column, grid, iteration, True)
+if __name__ == '__main__':
+    for iteration in range(5):
+        pushRow(motor_row, motor_column, grid, iteration, True)
