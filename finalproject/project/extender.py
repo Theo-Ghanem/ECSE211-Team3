@@ -21,6 +21,13 @@ column_distance = [140, 110, 90, 80, 60]  # probably will be different than row
 
 def pushRow(motor_row, motor_column, grid, iteration, verbose):
 
+    grid = [
+        [1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]
+    ]
     motor_row.set_limits(dps=80)  # speed of motor
     # make sure the motor is in correct position at start!
     motorStartPosition = motor_row.get_position()
