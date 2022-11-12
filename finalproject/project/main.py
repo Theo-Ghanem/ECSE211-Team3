@@ -63,6 +63,6 @@ if __name__ == '__main__':
 
     # Run the program
     print("hello?")
-    for iteration in range(5):
-        print("are you in here ?")
-        pushRow(motor_row, motor_column, grid, iteration, verbose)
+    # for iteration in range(5):
+    #     print("are you in here ?")
+    pushRow(motor_row, motor_column, grid, 0, verbose)
