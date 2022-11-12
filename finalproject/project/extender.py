@@ -35,11 +35,11 @@ def pushRow(motor_row, grid, iteration):
             motor_row.set_position(motorStartPosition + distance)
             while motor_row.is_moving():
                 sleep(0.1)
-            print("motor_row.set_position(motorStartPosition + 140)")
+            print("motor_row.set_position(motorStartPosition + distance)")
             sleep(2)  # wait before retracting
 
             # make extender retract
-            motor_row.set_limits(dps=100)
+            # motor_row.set_limits(dps=100)
             motor_column.set_position(motorStartPosition)
             while motor_row.is_moving():
                 sleep(0.1)
