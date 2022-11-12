@@ -43,7 +43,7 @@ def pushRow(motor_row, grid, iteration):
                 sleep(0.1)
             print("motor_column.set_position(motorStartPosition)")
 
-            # sleep(1)
+            sleep(2)
             # motor_row.set_power(0)  # always do 0% to stop motor
             # print("motor_left.set_power(0)")
 
