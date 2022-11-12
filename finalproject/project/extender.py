@@ -3,8 +3,8 @@
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
-motor_row = Motor("A")  # remove this after
-motor_column = Motor("B")  # remove this after
+# motor_row = Motor("A")  # remove this after
+# motor_column = Motor("B")  # remove this after
 
 # constants for row distance:
 row_distance = [140, 110, 90, 80, 60]
@@ -24,12 +24,10 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
     motor_row.set_limits(dps=80)  # speed of motor
     # make sure the motor is in correct position at start!
     motorStartPosition = motor_row.get_position()
-    print("do you get here")
     counter = 0
     atLeast1Cube = False
     for i in grid[iteration]:
         if i == 1:
-            print("1")
             atLeast1Cube = True
             if (verbose):
                 print("Cube " + str(counter+1) + " is loaded")
@@ -56,7 +54,6 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
 
         counter += 1
     if (atLeast1Cube):  # If there is no cube then no need to push the column
-        print("did not skip column " + str(iteration))
         pushColumn(motor_column, iteration, verbose)
 
 
@@ -64,6 +61,7 @@ def pushColumn(motor_column, iteration, verbose):
     if (verbose):
         print("Pushing wall to column " + str(abs(iteration-5)))
     motor_column.set_limits(dps=80)  # speed of motor
+
     # make sure the motor is in correct position at start!
     motorStartPosition = motor_column.get_position()
 
@@ -90,6 +88,6 @@ def pushColumn(motor_column, iteration, verbose):
     sleep(3)  # wait 3 seconds then exit
 
 
-if __name__ == '__main__':
-    for iteration in range(5):
-        pushRow(motor_row, motor_column, grid, iteration, True)
+# if __name__ == '__main__':
+#     for iteration in range(5):
+#         pushRow(motor_row, motor_column, grid, iteration, True)
