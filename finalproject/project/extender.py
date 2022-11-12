@@ -43,6 +43,7 @@ def pushRow(motor_row, grid, iteration):
                 sleep(0.1)
             print("extender retract's from row" + str(abs(counter-5)))
 
+            print("Waiting for cube " + counter + "to load")
             sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
