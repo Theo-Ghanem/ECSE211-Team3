@@ -62,8 +62,7 @@ def push_row(motor_row, motor_column, grid, iteration, verbose):
 
 
 def push_column(motor_column, iteration, verbose):
-    if (verbose):
-        print("\nPushing wall to column " + str(abs(iteration-5)))
+    
     motor_column.set_limits(dps=80)  # speed of motor
 
     # make sure the motor is in correct position at start!
