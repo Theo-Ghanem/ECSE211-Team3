@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# from utils.brick import Motor, TouchSensor, wait_ready_sensors
+from utils.brick import Motor, TouchSensor, wait_ready_sensors
 from time import sleep
 
 # motor_row = Motor("A")  # remove this after
@@ -32,12 +32,11 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
             if (verbose):
                 print("Cube " + str(counter+1) + " is loaded")
             distance = row_distance[counter]
-            print(1)
+
             # make extender extend
             motor_row.set_position(motorStartPosition + distance)
             while motor_row.is_moving():
                 sleep(0.1)
-                print("2")
             if (verbose):
                 print("Extender extend's to row " + str(abs(counter-5)))
 
@@ -54,7 +53,8 @@ def pushRow(motor_row, motor_column, grid, iteration, verbose):
 
         counter += 1
     if (atLeast1Cube):  # If there is no cube then no need to push the column
-        pushColumn(motor_column, iteration, verbose)
+        motor_column = Motor("B")  # remove this after
+        pushColumn(motor_column, 0, True)
 
 
 def pushColumn(motor_column, iteration, verbose):
