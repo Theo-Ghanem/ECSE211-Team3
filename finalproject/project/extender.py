@@ -15,7 +15,7 @@ from dispenser import (dispense_cube)
 # ]
 
 # constants for row distance:
-row_distance = [130, 110, 90, 80, 60]
+row_distance = [74, 66, 58, 50, 42]
 column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 
 
@@ -33,8 +33,6 @@ def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
 
             dispense_cube(motor_dispenser)
 
-            while motor_dispenser.is_moving():
-                sleep(0.1)
 
             if verbose:
                 print("Cube " + str(counter+1) + " is loaded")
