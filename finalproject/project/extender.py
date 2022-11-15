@@ -22,7 +22,7 @@ column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose):
 
     motor_row.set_limits(dps=80)  # speed of motor
-    motor_dispenser.set_limits(dps=60)  # speed of motor
+    motor_dispenser.set_limits(dps=80)  # speed of motor
     # make sure the motor is in correct position at start!
     motor_start_position = motor_row.get_position()
     counter = 0
@@ -31,8 +31,12 @@ def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
         if i == 1:
             at_least_one_cube = True
 
+
             dispense_cube(motor_dispenser)
-            sleep(2)
+
+            if verbose:
+                print("Waiting for cube to dispense")  
+            sleep(2.5)
 
             if verbose:
                 print("Cube " + str(counter+1) + " is loaded")
