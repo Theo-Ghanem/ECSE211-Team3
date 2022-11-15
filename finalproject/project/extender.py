@@ -24,7 +24,6 @@ column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose):
 
     motor_row.set_limits(dps=80)  # speed limit of motor
-    motor_dispenser.set_limits(dps=100)  # speed limit of motor
 
     # make sure the motor is in correct position at start!
     motor_start_position = motor_row.get_position()
@@ -102,11 +101,12 @@ def push_column(motor_column, iteration, verbose):
 
 def dispense_cube(motor_dispenser):
 
+    motor_dispenser.set_limits(dps=100)  # speed limit of motor
     motor_start_position = motor_dispenser.get_position()
     print("start at ", motor_start_position)
     ##make one revolution of the motor
     
-    motor_dispenser.set_dps(100)  # speed of motor
+    motor_dispenser.set_dps(60)  # speed of motor
     motor_dispenser.set_position(motor_start_position + 180)
     while motor_dispenser.is_moving():
                 sleep(0.1)
@@ -114,7 +114,7 @@ def dispense_cube(motor_dispenser):
     
     sleep(2) 
     
-    motor_dispenser.set_position_relative(-180)
+    motor_dispenser.set_position(motor_start_position)
     while motor_dispenser.is_moving():
                 sleep(0.1)
     print("returning to old position at", motor_dispenser.get_position())
