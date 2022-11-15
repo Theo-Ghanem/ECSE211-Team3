@@ -6,7 +6,7 @@ from time import sleep
 def dispense_cube(motor_dispenser):
 
     motor_start_position = motor_dispenser.get_position()
-
+    print("start at ", motor_start_position)
     ##make one revolution of the motor
     
     motor_dispenser.set_position(motor_start_position - 180)
@@ -14,7 +14,7 @@ def dispense_cube(motor_dispenser):
                 sleep(0.1)
     print("pushing cube out")
     
-    motor_dispenser.set_position_relative(180)
+    motor_dispenser.set_position(motor_start_position)
     while motor_dispenser.is_moving():
                 sleep(0.1)
     print("returning to old position")
