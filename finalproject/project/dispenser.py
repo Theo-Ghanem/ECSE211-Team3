@@ -10,10 +10,12 @@ def dispense_cube(motor_dispenser):
     ##make one revolution of the motor
     
     motor_dispenser.set_dps(60)  # speed of motor
-    motor_dispenser.set_position(motor_start_position - 180)
+    motor_dispenser.set_position(motor_start_position + 180)
     while motor_dispenser.is_moving():
                 sleep(0.1)
     print("pushing cube out at ", motor_dispenser.get_position())
+    
+    sleep(2) 
     
     motor_dispenser.set_position(motor_start_position)
     while motor_dispenser.is_moving():

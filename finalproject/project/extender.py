@@ -2,7 +2,7 @@
 
 from utils.brick import Motor
 from time import sleep
-from dispenser import (dispense_cube)
+# from dispenser import (dispense_cube)
 # FOR TESTING
 # motor_row = Motor("A")  # remove this after
 # motor_column = Motor("B")  # remove this after
@@ -98,3 +98,24 @@ def push_column(motor_column, iteration, verbose):
     if verbose:
         print("Waiting for next row to be done\n")
     sleep(3)  # wait 3 seconds then exit
+
+
+def dispense_cube(motor_dispenser):
+
+    motor_start_position = motor_dispenser.get_position()
+    print("start at ", motor_start_position)
+    ##make one revolution of the motor
+    
+    motor_dispenser.set_dps(60)  # speed of motor
+    motor_dispenser.set_position(motor_start_position + 180)
+    while motor_dispenser.is_moving():
+                sleep(0.1)
+    print("pushing cube out at ", motor_dispenser.get_position())
+    
+    sleep(2) 
+    
+    motor_dispenser.set_position(motor_start_position)
+    while motor_dispenser.is_moving():
+                sleep(0.1)
+    print("returning to old position at", motor_dispenser.get_position())
+    motor_dispenser.set_dps(0)  # speed of motor
