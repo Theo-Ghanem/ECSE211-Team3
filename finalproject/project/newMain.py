@@ -20,7 +20,7 @@ def push_motor_distance(motor, distance):
     motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
-    sleep(1)
+    sleep(5)
     motor.set_position_relative(-distance)
     while motor.is_moving():
         sleep(0.1)
