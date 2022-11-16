@@ -7,12 +7,12 @@ from process_input import (collect_grid_terminal_input,
                            validate_grid, convert_grid_to_int)
 preloaded_grid = [
     [0, 0, 1, 0, 0],
-    [0, 1, 1, 0, 0],
+    [0, 0, 1, 0, 0],
     [0, 0, 1, 0, 0],
     [0, 0, 1, 0, 0],
     [0, 0, 1, 0, 0]
 ]
-row_distances = [72,77.5, 83, 90, 93]#sercond pusher
+row_distances = [72,77.5, 83, 88, 93]#sercond pusher
 col_distances = [75, 90, 108, 120, 140]#first pusher
 
 
@@ -42,7 +42,7 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
         if cube_dispensed:
             if debug:
                 input("About to push row "+str(i))
-            push_motor_distance(row_motor,row_distances[i],6)
+            push_motor_distance(row_motor,row_distances[i],5)
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     if not preload_grid:
