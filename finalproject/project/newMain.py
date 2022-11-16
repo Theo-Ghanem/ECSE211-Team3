@@ -36,7 +36,7 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
                 push_motor_distance(dispenser_motor,180)
                 if debug:
                     input("About to push cube "+str(i)+" "+str(j))
-                push_motor_distance(col_motor,col_distances[j])
+                push_motor_distance(col_motor,-col_distances[j])
         if cube_dispensed:
             if debug:
                 input("About to push row "+str(i))
