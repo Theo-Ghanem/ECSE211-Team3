@@ -13,7 +13,7 @@ preloaded_grid = [
     [1, 1, 1, 1, 1]
 ]
 row_distances = [42, 50, 58, 66, 74]
-col_distances = [65, 80, 90, 105, 120]
+col_distances = [60, 75, 90, 103, 120]
 
 
 def push_motor_distance(motor, distance):
@@ -71,7 +71,7 @@ if __name__ == '__main__':
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=60)
     motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
-    motor_dispenser.set_limits(dps=0)  # speed of motor
+    motor_dispenser.set_limits(dps=180)  # speed of motor
     wait_ready_sensors(verbose)
     
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
