@@ -12,7 +12,7 @@ preloaded_grid = [
     [0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1]
 ]
-row_distances = [10, 20, 30, 40, 50]
+row_distances = [20, 35, 50, 65, 80]
 col_distances = [60, 75, 90, 103, 120]
 
 
