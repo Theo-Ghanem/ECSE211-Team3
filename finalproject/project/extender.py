@@ -2,7 +2,7 @@
 
 from utils.brick import Motor
 from time import sleep
-from dispenser import (dispense_cube)
+# from dispenser import (dispense_cube)
 # FOR TESTING
 # motor_row = Motor("A")  # remove this after
 # motor_column = Motor("B")  # remove this after
@@ -15,14 +15,16 @@ from dispenser import (dispense_cube)
 # ]
 
 # constants for row distance:
-row_distance = [74, 66, 58, 50, 42]
+# row_distance = [74, 66, 58, 50, 42]
+# column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
+row_distance = [140, 120, 100, 80, 60]
 column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 
 
 def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose):
 
-    motor_row.set_limits(dps=80)  # speed of motor
-    motor_dispenser.set_limits(dps=30)  # speed of motor
+    motor_row.set_limits(dps=80)  # speed limit of motor
+
     # make sure the motor is in correct position at start!
     motor_start_position = motor_row.get_position()
     counter = 0
@@ -30,18 +32,18 @@ def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
     for i in grid[iteration]:
         if i == 1:
             at_least_one_cube = True
-
             dispense_cube(motor_dispenser)
 
-            while motor_dispenser.is_moving():
-                sleep(0.1)
+            if verbose:
+                print("Waiting for cube to dispense")  
+            sleep(2.5)
 
             if verbose:
                 print("Cube " + str(counter+1) + " is loaded")
             distance = row_distance[counter]
 
             # make extender extend
-            motor_row.set_position(motor_start_position + distance)
+            motor_row.set_position(motor_start_position - distance)
             while motor_row.is_moving():
                 sleep(0.1)
             if verbose:
@@ -95,3 +97,26 @@ def push_column(motor_column, iteration, verbose):
     if verbose:
         print("Waiting for next row to be done\n")
     sleep(3)  # wait 3 seconds then exit
+
+
+def dispense_cube(motor_dispenser):
+
+    motor_start_position = -150
+    print("start at ", motor_dispenser)
+    ##make one revolution of the motor
+    
+
+    motor_dispenser.set_dps(60)  # speed of motor
+    motor_dispenser.set_position(motor_start_position)
+    motor_dispenser.set_position(motor_start_position + 180)
+    while motor_dispenser.is_moving():
+                sleep(0.1)
+    print("pushing cube out at ", motor_dispenser.get_position())
+    
+    sleep(2) 
+    
+    motor_dispenser.set_position_relative(-180)
+    while motor_dispenser.is_moving():
+                sleep(0.1)
+    print("returning to old position at", motor_dispenser.get_position())
+    motor_dispenser.set_dps(0)  # speed of motor
