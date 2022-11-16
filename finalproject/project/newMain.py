@@ -7,10 +7,10 @@ from process_input import (collect_grid_terminal_input,
                            validate_grid, convert_grid_to_int)
 preloaded_grid = [
     [0, 0, 1, 0, 0],
-    [1, 1, 0, 1, 0],
-    [1, 0, 1, 1, 1],
+    [0, 1, 1, 0, 0],
     [0, 0, 1, 0, 0],
-    [1, 0, 1, 0, 1]
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0]
 ]
 row_distances = [72,77.5, 83, 90, 93]#sercond pusher
 col_distances = [75, 90, 108, 120, 140]#first pusher
