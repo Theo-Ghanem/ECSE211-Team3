@@ -42,7 +42,7 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
         if cube_dispensed:
             if debug:
                 input("About to push row "+str(i))
-            push_motor_distance(row_motor,row_distances[i])
+            push_motor_distance(row_motor,row_distances[i],6)
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     if not preload_grid:
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     touch_sensor_0 = TouchSensor(1)
     touch_sensor_1 = TouchSensor(2)
     motor_row = Motor("A")  # Motor for the row pusher is in port A
-    motor_row.set_limits(dps=15)  # speed of motor
+    motor_row.set_limits(dps=25)  # speed of motor
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=80)
     motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
