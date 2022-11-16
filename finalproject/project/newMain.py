@@ -69,7 +69,7 @@ if __name__ == '__main__':
     touch_sensor_0 = TouchSensor(1)
     touch_sensor_1 = TouchSensor(2)
     motor_row = Motor("A")  # Motor for the row pusher is in port A
-    motor_row.set_limits(dps=45)  # speed of motor
+    motor_row.set_limits(dps=60)  # speed of motor
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=80)
     motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
