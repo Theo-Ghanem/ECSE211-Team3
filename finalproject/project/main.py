@@ -83,6 +83,7 @@ if __name__ == '__main__':
     touch_sensor_1 = TouchSensor(2)
     motor_row = Motor("A")  # Motor for the row pusher is in port A
     motor_column = Motor("B")  # Motor for the column pusher is in port B
+    motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
 
     wait_ready_sensors(verbose)
 
@@ -112,4 +113,6 @@ if __name__ == '__main__':
     if verbose:
         print("\nStarting pistons...\n")
     for iteration in range(5):
-        push_row(motor_row, motor_column, grid, iteration, verbose)
+        push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
+
+    motor_dispenser.set_position(0)
