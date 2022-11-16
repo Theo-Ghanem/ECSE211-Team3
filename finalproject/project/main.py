@@ -109,6 +109,10 @@ if __name__ == '__main__':
     if debug:
         input("Press enter to proceed...")
 
+    start = motor_dispenser.get_position()
+    print("start at ", start)
+    motor_dispenser.offset_encoder(start)
+    
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
