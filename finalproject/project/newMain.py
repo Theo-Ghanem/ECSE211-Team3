@@ -20,10 +20,12 @@ def push_motor_distance(motor, distance):
     motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
+    print("push should be done",distance)
     sleep(3)
     motor.set_position_relative(-distance)
     while motor.is_moving():
         sleep(0.1)
+    print("retraction should be done",-distance)
     sleep(2)
 def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
     for i in range(4,-1,-1):
