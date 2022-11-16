@@ -20,13 +20,26 @@ def push_motor_distance(motor, distance,delay=3):
     motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
-    print("push should be done",distance)
+    # print("push should be done",distance)
     sleep(delay)
     motor.set_position_relative(-distance)
     while motor.is_moving():
         sleep(0.1)
-    print("retraction should be done",-distance)
+    # print("retraction should be done",-distance)
     sleep(delay)
+def dispense_cube(motor):
+    motor_dispenser.set_limits(dps=600) 
+    motor.set_position_relative(180)
+    while motor.is_moving():
+        sleep(0.1)
+    # print("push should be done")
+    sleep(1.25)
+    motor_dispenser.set_limits(dps=250) 
+    motor.set_position_relative(-180)
+    while motor.is_moving():
+        sleep(0.1)
+    # print("retraction should be done",-distance)
+    sleep(1.25)
 def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
     for i in range(4,-1,-1):
         cube_dispensed = False
@@ -35,7 +48,8 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
                 if debug:
                     input("About to dispense cube "+str(i)+" "+str(j))
                 cube_dispensed = True
-                push_motor_distance(dispenser_motor,180,1.25)
+                # push_motor_distance(dispenser_motor,180,1.25)
+                dispense_cube(dispenser_motor)
                 if debug:
                     input("About to push cube "+str(i)+" "+str(j))
                 push_motor_distance(col_motor,-col_distances[j])
