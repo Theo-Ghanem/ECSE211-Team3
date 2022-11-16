@@ -100,7 +100,7 @@ def push_column(motor_column, iteration, verbose):
 
 
 def dispense_cube(motor_dispenser):
-    motor_dispenser.set_dps(60)  # speed of motor
+    motor_dispenser.set_dps(70)  # speed of motor
     motor_dispenser.set_position_relative(200)
     
     sleep(2) 
