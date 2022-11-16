@@ -18,7 +18,7 @@ from time import sleep
 # row_distance = [74, 66, 58, 50, 42]
 # column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 # row_distance = [120, 105, 85, 70, 54]
-row_distance = [140, 120, 105, 95, 82]
+row_distance = [140, 120, 105, 80, 65]
 column_distance = [100, 80, 60, 40, 20]  # probably will be different than row
 
 
