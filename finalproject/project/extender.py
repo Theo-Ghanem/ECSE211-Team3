@@ -17,7 +17,7 @@ from time import sleep
 # constants for row distance:
 # row_distance = [74, 66, 58, 50, 42]
 # column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
-row_distance = [130, 110, 100, 80, 60]
+row_distance = [140, 120, 100, 90, 80]
 column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 
 
