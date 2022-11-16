@@ -101,14 +101,14 @@ def push_column(motor_column, iteration, verbose):
 
 def dispense_cube(motor_dispenser):
 
-    motor_start_position = -150
-    print("start at ", motor_dispenser)
-    ##make one revolution of the motor
+    #motor_start_position = -150
+    start = motor_dispenser.get_position()
+    print("start at ", start)
+    motor_dispenser.offset_encoder(start)
     
 
-    motor_dispenser.set_dps(60)  # speed of motor
-    motor_dispenser.set_position(motor_start_position)
-    motor_dispenser.set_position(motor_start_position + 180)
+    motor_dispenser.set_dps(30)  # speed of motor
+    motor_dispenser.set_position_relative(180)
     while motor_dispenser.is_moving():
                 sleep(0.1)
     print("pushing cube out at ", motor_dispenser.get_position())
