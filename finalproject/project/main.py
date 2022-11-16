@@ -110,7 +110,9 @@ if __name__ == '__main__':
         input("Press enter to proceed...")
 
     start = motor_dispenser.get_position()
-    print("start at ", start)
+
+    if(verbose):
+        print("start at ", start)
     motor_dispenser.offset_encoder(start)
     
     # Run the program
