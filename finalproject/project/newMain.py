@@ -28,7 +28,7 @@ def push_motor_distance(motor, distance,delay=3):
     # print("retraction should be done",-distance)
     sleep(delay)
 def dispense_cube(motor):
-    motor_dispenser.set_limits(dps=600) 
+    motor_dispenser.set_limits(dps=500) 
     motor.set_position_relative(180)
     while motor.is_moving():
         sleep(0.1)
