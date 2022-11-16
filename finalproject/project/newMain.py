@@ -20,11 +20,11 @@ def push_motor_distance(motor, distance):
     motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
-    sleep(0.5)
+    sleep(1)
     motor.set_position_relative(-distance)
     while motor.is_moving():
         sleep(0.1)
-    sleep(1)
+    sleep(2)
 def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
     for i in range(4,-1,-1):
         cube_dispensed = False
