@@ -12,7 +12,7 @@ preloaded_grid = [
     [0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1]
 ]
-row_distances = [45, 57.5, 70, 82.5, 95]#sercond pusher
+row_distances = [70, 85, 90, 97, 105]#sercond pusher
 col_distances = [75, 90, 108, 120, 140]#first pusher
 
 
