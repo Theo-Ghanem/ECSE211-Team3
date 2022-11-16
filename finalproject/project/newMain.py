@@ -12,7 +12,7 @@ preloaded_grid = [
     [0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1]
 ]
-row_distances = [20, 30, 40, 50, 60]#sercond pusher
+row_distances = [45, 57.5, 70, 82.5, 95]#sercond pusher
 col_distances = [75, 90, 108, 120, 140]#first pusher
 
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     touch_sensor_0 = TouchSensor(1)
     touch_sensor_1 = TouchSensor(2)
     motor_row = Motor("A")  # Motor for the row pusher is in port A
-    motor_row.set_limits(dps=25)  # speed of motor
+    motor_row.set_limits(dps=30)  # speed of motor
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=80)
     motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
