@@ -6,14 +6,14 @@ from process_input import (collect_grid_terminal_input,
                            collect_grid_touch_sensor_input, print_grid,
                            validate_grid, convert_grid_to_int)
 preloaded_grid = [
+    [1, 0, 1, 0, 0],
+    [0, 1, 1, 0, 0],
     [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0]
+    [0, 0, 1, 1, 0],
+    [0, 0, 1, 0, 1]
 ]
-row_distances = [72,77.5, 83.5, 87.5, 93]#sercond pusher
-col_distances = [75, 90, 108, 120, 140]#first pusher
+row_distances = [71.5,77.5, 83.5, 87.5, 93]#sercond pusher
+col_distances = [75, 90, 107, 120, 140]#first pusher
 
 
 def push_motor_distance(motor, distance,delay=3):
