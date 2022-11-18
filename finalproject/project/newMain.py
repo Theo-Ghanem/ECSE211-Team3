@@ -80,9 +80,9 @@ if __name__ == '__main__':
     debug = '-d' in sys.argv
     verbose = '-v' in sys.argv
     preload_grid = '-p' in sys.argv
-    touch_sensor_0 = TouchSensor(1)
-    touch_sensor_1 = TouchSensor(2)
-    motor_row = Motor("A")  # Motor for the row pusher is in port A
+    touch_sensor_0 = TouchSensor(3)
+    touch_sensor_1 = TouchSensor(4)
+    motor_row = Motor("D")  # Motor for the row pusher is in port A
     motor_row.set_limits(dps=70)  # speed of motor
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=80)
