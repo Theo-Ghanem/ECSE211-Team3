@@ -56,7 +56,7 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
         if cube_dispensed:
             if debug:
                 input("About to push row "+str(i))
-            push_motor_distance(row_motor,row_distances[i],4)
+            push_motor_distance(row_motor,-row_distances[i],4)
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     if not preload_grid:
