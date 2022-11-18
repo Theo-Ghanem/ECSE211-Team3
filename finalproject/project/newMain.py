@@ -12,7 +12,7 @@ preloaded_grid = [
     [0, 0, 1, 1, 0],
     [0, 0, 1, 0, 1]
 ]
-row_distances = [30, 48, 60, 75, 90]#second pusher
+row_distances = [40, 60, 70, 85, 100]#second pusher
 col_distances = [70, 82, 95, 110, 128]#first pusher
 
 
@@ -29,13 +29,13 @@ def push_motor_distance(motor, distance,delay=3):
     sleep(delay)
 def dispense_cube(motor):
     motor_dispenser.set_limits(dps=400) 
-    motor.set_position_relative(140)
+    motor.set_position_relative(130)
     while motor.is_moving():
         sleep(0.1)
     # print("push should be done")
     sleep(1.25)
     motor_dispenser.set_limits(dps=250) 
-    motor.set_position_relative(-140)
+    motor.set_position_relative(-130)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
