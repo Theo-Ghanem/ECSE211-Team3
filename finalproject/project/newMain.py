@@ -31,7 +31,7 @@ preloaded_grid = [  # test row
 ]
 
 
-row_distances = [30, 60, 70, 82, 100]  # second pusher
+row_distances = [38, 57, 69, 84, 100]  # second pusher
 # col_distances = [70, 82, 92, 105, 128]  # first pusher #old
 # col_distances = [88, 100, 110, 128, 150]  # first pusher #new
 col_distances = [-44, -50, -57, -65, -74]  # first pusher #new
