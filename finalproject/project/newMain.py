@@ -31,7 +31,7 @@ def push_motor_distance(motor, distance, delay=3):
 
 
 def dispense_cube(motor):
-    motor_dispenser.set_limits(dps=300)
+    motor_dispenser.set_limits(dps=150)
     motor.set_position_relative(80)
     while motor.is_moving():
         sleep(0.1)
