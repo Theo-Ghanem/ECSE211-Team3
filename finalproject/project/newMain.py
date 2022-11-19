@@ -14,7 +14,8 @@ preloaded_grid = [
     [0, 0, 1, 0, 1]
 ]
 row_distances = [50, 60, 70, 82, 100]  # second pusher
-col_distances = [70, 82, 92, 105, 128]  # first pusher
+# col_distances = [70, 82, 92, 105, 128]  # first pusher #old
+col_distances = [80, 92, 110, 128, 150]  # first pusher #new
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     preload_grid = '-p' in sys.argv
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
-    motor_row = Motor("D")  # Motor for the row pusher is in port A
+    motor_row = Motor("D")  # Motor for the row pusher is in port D
     motor_row.set_limits(dps=70)  # speed of motor
     motor_column = Motor("B")  # Motor for the column pusher is in port B
     motor_column.set_limits(dps=80)
