@@ -16,8 +16,9 @@ from utils.brick import Motor
 # ]
 
 # constants for row distance:
-row_distance = [130, 110, 90, 80, 60]
+# row_distance = [130, 110, 90, 80, 60] #old
 column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
+row_distance = [150, 130, 120, 110, 90]  # new
 
 
 def push_row(motor_row, motor_column, grid, iteration, verbose):
