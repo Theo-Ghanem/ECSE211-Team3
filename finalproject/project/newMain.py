@@ -106,7 +106,5 @@ if __name__ == '__main__':
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
-    print(motor_column.get_position())
-    while True:
-        print(motor_column.float_motor())
-    # run_dispensing(grid, motor_dispenser, motor_column, motor_row)
+    # print(motor_column.get_position())
+    run_dispensing(grid, motor_dispenser, motor_column, motor_row)
