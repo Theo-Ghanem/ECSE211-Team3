@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-from utils.brick import Motor
 from time import sleep
-from dispenser import (dispense_cube)
+
+from utils.brick import Motor
+
 # FOR TESTING
 # motor_row = Motor("A")  # remove this after
 # motor_column = Motor("B")  # remove this after
@@ -15,46 +16,41 @@ from dispenser import (dispense_cube)
 # ]
 
 # constants for row distance:
-row_distance = [70, 60, 58, 50, 40]
+row_distance = [130, 110, 90, 80, 60]
 column_distance = [130, 110, 90, 80, 60]  # probably will be different than row
 
 
-def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose):
+def push_row(motor_row, motor_column, grid, iteration, verbose):
 
     motor_row.set_limits(dps=80)  # speed of motor
-    motor_dispenser.set_limits(dps=30)  # speed of motor
     # make sure the motor is in correct position at start!
     motor_start_position = motor_row.get_position()
-    motor_dispenser_start_position = motor_dispenser.get_position()
     counter = 0
     at_least_one_cube = False
     for i in grid[iteration]:
         if i == 1:
             at_least_one_cube = True
-
-            dispense_cube(motor_dispenser, motor_dispenser_start_position)
-
-            sleep(3)
-
             if verbose:
                 print("Cube " + str(counter+1) + " is loaded")
             distance = row_distance[counter]
 
             # make extender extend
             motor_row.set_position(motor_start_position + distance)
-            
+            while motor_row.is_moving():
+                sleep(0.1)
             if verbose:
                 print("Extender extend's to row " + str(abs(counter-5)))
 
-            sleep(3)  # wait before retracting
+            sleep(2)  # wait before retracting
 
             # make extender retract
             motor_row.set_position(motor_start_position)
-
+            while motor_row.is_moving():
+                sleep(0.1)
             if verbose:
                 print("Extender retract's from row " + str(abs(counter-5)))
 
-            sleep(5)  # wait 5 befor loading cube
+            sleep(5)  # wait 5 seconds for cube to load in
 
         counter += 1
     if (at_least_one_cube):  # If there is no cube then no need to push the column
@@ -66,7 +62,7 @@ def push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
 
 
 def push_column(motor_column, iteration, verbose):
-    
+
     motor_column.set_limits(dps=80)  # speed of motor
 
     # make sure the motor is in correct position at start!
