@@ -2,12 +2,12 @@
 
 import sys
 
-from process_input import (collect_grid_terminal_input,
-                           collect_grid_touch_sensor_input, print_grid,
-                           validate_grid, convert_grid_to_int)
-from utils.brick import TouchSensor, Motor, wait_ready_sensors
-
 from extender import push_row
+from process_input import (collect_grid_terminal_input,
+                           collect_grid_touch_sensor_input,
+                           convert_grid_to_int, print_grid, validate_grid)
+from utils.brick import Motor, TouchSensor, wait_ready_sensors
+
 
 def interpret_arguments():
     # Debug mode includes terminal binary input
@@ -65,6 +65,7 @@ def interpret_arguments():
         exit()
     return debug, verbose, preload_grid
 
+
 preloaded_grid = [
     [0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1],
@@ -98,7 +99,7 @@ if __name__ == '__main__':
                 grid, touch_sensor_0, touch_sensor_1, verbose)
 
         grid = convert_grid_to_int(grid)
-        
+
     else:
         grid = preloaded_grid
 
@@ -111,14 +112,15 @@ if __name__ == '__main__':
 
     start = motor_dispenser.get_position()
 
-    if(verbose):
+    if (verbose):
         print("start at ", start)
     motor_dispenser.offset_encoder(start)
-    
+
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
     for iteration in range(5):
-        push_row(motor_row, motor_column, motor_dispenser, grid, iteration, verbose)
+        push_row(motor_row, motor_column, motor_dispenser,
+                 grid, iteration, verbose)  # type: ignore
 
     motor_dispenser.set_position(0)

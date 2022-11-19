@@ -1,10 +1,11 @@
 import sys
 from time import sleep
-from utils.brick import TouchSensor, Motor, wait_ready_sensors
 
 from process_input import (collect_grid_terminal_input,
-                           collect_grid_touch_sensor_input, print_grid,
-                           validate_grid, convert_grid_to_int)
+                           collect_grid_touch_sensor_input,
+                           convert_grid_to_int, print_grid, validate_grid)
+from utils.brick import Motor, TouchSensor, wait_ready_sensors
+
 preloaded_grid = [
     [1, 0, 1, 0, 0],
     [0, 1, 1, 0, 0],
@@ -12,11 +13,11 @@ preloaded_grid = [
     [0, 0, 1, 1, 0],
     [0, 0, 1, 0, 1]
 ]
-row_distances = [50, 60, 70, 82, 100]#second pusher
-col_distances = [70, 82, 92, 105, 128]#first pusher
+row_distances = [50, 60, 70, 82, 100]  # second pusher
+col_distances = [70, 82, 92, 105, 128]  # first pusher
 
 
-def push_motor_distance(motor, distance,delay=3):
+def push_motor_distance(motor, distance, delay=3):
     motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
@@ -27,23 +28,27 @@ def push_motor_distance(motor, distance,delay=3):
         sleep(0.1)
     # print("retraction should be done",-distance)
     sleep(delay)
+
+
 def dispense_cube(motor):
-    motor_dispenser.set_limits(dps=300) 
-    motor.set_position_relative(120)
+    motor_dispenser.set_limits(dps=300)
+    motor.set_position_relative(110)
     while motor.is_moving():
         sleep(0.1)
     # print("push should be done")
     sleep(1.25)
-    motor_dispenser.set_limits(dps=250) 
-    motor.set_position_relative(-120)
+    motor_dispenser.set_limits(dps=250)
+    motor.set_position_relative(-110)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
     sleep(1.25)
-def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
-    for i in range(4,-1,-1):
+
+
+def run_dispensing(grid, dispenser_motor, col_motor, row_motor):
+    for i in range(4, -1, -1):
         cube_dispensed = False
-        for j in range(4,-1,-1):
+        for j in range(4, -1, -1):
             if grid[i][j] == 1:
                 if debug:
                     input("About to dispense cube "+str(i)+" "+str(j))
@@ -52,11 +57,12 @@ def run_dispensing(grid,dispenser_motor,col_motor,row_motor):
                 dispense_cube(dispenser_motor)
                 if debug:
                     input("About to push cube "+str(i)+" "+str(j))
-                push_motor_distance(col_motor,-col_distances[j])
+                push_motor_distance(col_motor, -col_distances[j])
         if cube_dispensed:
             if debug:
                 input("About to push row "+str(i))
-            push_motor_distance(row_motor,-row_distances[i],4)
+            push_motor_distance(row_motor, -row_distances[i], 4)
+
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     if not preload_grid:
@@ -69,12 +75,13 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
                 grid, touch_sensor_0, touch_sensor_1, verbose)
 
         grid = convert_grid_to_int(grid)
-        
+
     else:
         grid = preloaded_grid
     validate_grid(grid, verbose)
     print_grid(grid)
     return grid
+
 
 if __name__ == '__main__':
     debug = '-d' in sys.argv
@@ -89,7 +96,7 @@ if __name__ == '__main__':
     motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
     motor_dispenser.set_limits(dps=250)  # speed of motor
     wait_ready_sensors(verbose)
-    
+
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
     if debug:
@@ -97,5 +104,5 @@ if __name__ == '__main__':
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
-    
-    run_dispensing(grid,motor_dispenser,motor_column,motor_row)
+
+    run_dispensing(grid, motor_dispenser, motor_column, motor_row)
