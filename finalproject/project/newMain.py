@@ -6,12 +6,20 @@ from process_input import (collect_grid_terminal_input,
                            convert_grid_to_int, print_grid, validate_grid)
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 
+# preloaded_grid = [
+#     [1, 0, 1, 0, 0],
+#     [0, 1, 1, 0, 0],
+#     [0, 0, 1, 0, 0],
+#     [0, 0, 1, 1, 0],
+#     [0, 0, 1, 0, 1]
+# ]
+
 preloaded_grid = [
-    [1, 0, 1, 0, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 1, 0],
-    [0, 0, 1, 0, 1]
+    [1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0]
 ]
 row_distances = [50, 60, 70, 82, 100]  # second pusher
 # col_distances = [70, 82, 92, 105, 128]  # first pusher #old
