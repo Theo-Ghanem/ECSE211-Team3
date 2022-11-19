@@ -24,10 +24,10 @@ from utils.brick import Motor, TouchSensor, wait_ready_sensors
 
 preloaded_grid = [  # test row
     [1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0]
+    [1, 1, 0, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 0, 1]
 ]
 
 
