@@ -31,10 +31,10 @@ preloaded_grid = [  # test row
 ]
 
 
-row_distances = [44, 57, 69, 84, 100]  # second pusher
-# col_distances = [70, 82, 92, 105, 128]  # first pusher #old
-# col_distances = [88, 100, 110, 128, 150]  # first pusher #new
-col_distances = [-51, -58, -65, -74, -82]  # first pusher #new
+column_distances = [44, 57, 69, 84, 100]  # second pusher
+# row_distances = [70, 82, 92, 105, 128]  # first pusher #old
+# row_distances = [88, 100, 110, 128, 150]  # first pusher #new
+row_distances = [-51, -58, -65, -74, -82]  # first pusher #new
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -68,7 +68,7 @@ def dispense_cube(motor):
     sleep(1.25)
 
 
-def run_dispensing(grid, dispenser_motor, col_motor, row_motor):
+def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
     for i in range(4, -1, -1):
         cube_dispensed = False
         for j in range(4, -1, -1):
@@ -80,11 +80,11 @@ def run_dispensing(grid, dispenser_motor, col_motor, row_motor):
                 dispense_cube(dispenser_motor)
                 if debug:
                     input("About to push cube "+str(i)+" "+str(j))
-                push_motor_distance(col_motor, -col_distances[j])
+                push_motor_distance(row_motor, -row_distances[j])
         if cube_dispensed:
             if debug:
-                input("About to push row "+str(i))
-            push_motor_distance(row_motor, -row_distances[i], 4)
+                input("About to push column "+str(i))
+            push_motor_distance(column_motor, -column_distances[i], 4)
 
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
@@ -112,11 +112,11 @@ if __name__ == '__main__':
     preload_grid = '-p' in sys.argv
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
-    motor_row = Motor("D")  # Motor for the row pusher is in port D
-    motor_row.set_limits(dps=70)  # speed of motor
-    motor_column = Motor("B")  # Motor for the column pusher is in port B
-    motor_column.set_limits(dps=80)
-    motor_dispenser = Motor("C")  # Motor for the dispensor is in port C
+    motor_column = Motor("D")  # Motor for the column pusher is in port D
+    motor_column.set_limits(dps=70)  # speed of motor
+    motor_row = Motor("B")  # Motor for the row pusher is in port B
+    motor_row.set_limits(dps=80)
+    motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=250)  # speed of motor
     wait_ready_sensors(verbose)
 
@@ -128,4 +128,4 @@ if __name__ == '__main__':
     if verbose:
         print("\nStarting pistons...\n")
     # print(motor_column.get_position())
-    run_dispensing(grid, motor_dispenser, motor_column, motor_row)
+    run_dispensing(grid, motor_dispenser, motor_row, motor_column)
