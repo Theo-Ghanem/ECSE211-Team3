@@ -38,12 +38,15 @@ col_distances = [-41, -47, -54, -63, -72]  # first pusher #new
 
 
 def push_motor_distance(motor, distance, delay=3):
-    motor.set_position_relative(distance)
+    motor_start_position = motor.get_position()
+    motor.set_position(motor_start_position + distance)
+    # motor.set_position_relative(distance)
     while motor.is_moving():
         sleep(0.1)
     # print("push should be done",distance)
     sleep(delay)
-    motor.set_position_relative(-distance)
+    motor.set_position(motor_start_position)
+    # motor.set_position_relative(-distance)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
