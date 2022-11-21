@@ -66,4 +66,43 @@ git remote -v
 ```
 
 
+## Resetting the Repository (All on the BrickPi)
+
+Remove the current repositoy on the BrickPi  
+
+```bash
+rm -rf ecse211
+```
+
+
+On the BrickPi, remake the directory:
+
+```bash
+mkdir ecse211
+```
+
+In the `ecse211` folder, intialize the repository:  
+
+```bash
+git init
+```
+
+Update the receiving configurations:
+
+```bash
+git config receive.denyCurrentBranch updateInstead
+```
+
+**On your computer:** push the repository to the robot:
+```bash
+git push brick5 main
+``` 
+
+If the repository does not appear, the robot may be on a wrong branch. Switch to main:  
+
+```bash
+git checkout main
+```
+
+
 
