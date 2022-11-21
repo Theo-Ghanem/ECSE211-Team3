@@ -34,7 +34,7 @@ preloaded_grid = [  # test row
 column_distances = [94, 107, 119, 134, 150]  # second pusher
 # row_distances = [70, 82, 92, 105, 128]  # first pusher #old
 # row_distances = [88, 100, 110, 128, 150]  # first pusher #new
-row_distances = [-52, -59, -66, -77, -81]  # first pusher #new
+row_distances = [-60, -70, -80, -90, -100]  # first pusher #new
 
 
 def push_motor_distance(motor, distance, delay=3):
