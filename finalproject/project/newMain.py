@@ -116,9 +116,9 @@ if __name__ == '__main__':
     motor_column = Motor("D")  # Motor for the column pusher is in port D
     motor_column.set_limits(dps=70)  # speed of motor
     motor_row = Motor("B")  # Motor for the row pusher is in port B
-    motor_row.set_limits(dps=300)
+    motor_row.set_limits(dps=80)
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
-    motor_dispenser.set_limits(dps=80)  # speed of motor
+    motor_dispenser.set_limits(dps=250)  # speed of motor
     wait_ready_sensors(verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
