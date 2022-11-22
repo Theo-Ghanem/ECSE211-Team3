@@ -14,21 +14,21 @@ from utils.brick import Motor, TouchSensor, wait_ready_sensors
 #     [0, 0, 1, 0, 1]
 # ]
 
-# preloaded_grid = [  # test column
-#     [1, 1, 1, 1, 1],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0]
-# ]
-
-preloaded_grid = [  # test row
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0]
+preloaded_grid = [  # test column
+    [1, 1, 1, 1, 1],
+    [1, 1, 0, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 0, 1]
 ]
+
+# preloaded_grid = [  # test row
+#     [1, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0]
+# ]
 
 
 column_distances = [122, 141, 159, 181, 218]  # second pusher
