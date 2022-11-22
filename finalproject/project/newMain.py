@@ -116,7 +116,7 @@ if __name__ == '__main__':
     motor_column = Motor("D")  # Motor for the column pusher is in port D
     motor_column.set_limits(dps=70)  # speed of motor
     motor_row = Motor("B")  # Motor for the row pusher is in port B
-    motor_row.set_limits(dps=80)
+    motor_row.set_limits(dps=360)
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=250)  # speed of motor
     wait_ready_sensors(verbose)
