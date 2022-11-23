@@ -1,9 +1,12 @@
 import sys
 from time import sleep
 
-from process_input import (collect_grid_terminal_input,
-                           collect_grid_touch_sensor_input,
-                           convert_grid_to_int, print_grid, validate_grid)
+from process_input import (
+    collect_grid_terminal_input,
+    collect_grid_touch_sensor_input,
+    print_grid,
+    validate_grid,
+)
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
 
 # preloaded_grid = [
@@ -19,7 +22,7 @@ preloaded_grid = [  # test column
     [1, 1, 0, 0, 0],
     [1, 0, 1, 0, 0],
     [1, 0, 0, 1, 0],
-    [1, 0, 0, 0, 1]
+    [1, 0, 0, 0, 1],
 ]
 
 # preloaded_grid = [  # test row
@@ -75,16 +78,16 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
         for j in range(4, -1, -1):
             if grid[i][j] == 1:
                 if debug:
-                    input("About to dispense cube "+str(i)+" "+str(j))
+                    input("About to dispense cube " + str(i) + " " + str(j))
                 cube_dispensed = True
                 # push_motor_distance(dispenser_motor,180,1.25)
                 dispense_cube(dispenser_motor)
                 if debug:
-                    input("About to push cube "+str(i)+" "+str(j))
+                    input("About to push cube " + str(i) + " " + str(j))
                 push_motor_distance(row_motor, -row_distances[j])
         if cube_dispensed:
             if debug:
-                input("About to push column "+str(i))
+                input("About to push column " + str(i))
             push_motor_distance(column_motor, -column_distances[i], 4)
 
 
@@ -96,21 +99,20 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
             collect_grid_terminal_input(grid)
         else:
             collect_grid_touch_sensor_input(
-                grid, touch_sensor_0, touch_sensor_1, verbose)
-
-        grid = convert_grid_to_int(grid)
-
+                grid, touch_sensor_0, touch_sensor_1, verbose
+            )
     else:
         grid = preloaded_grid
+
     validate_grid(grid, verbose)
     print_grid(grid)
     return grid
 
 
-if __name__ == '__main__':
-    debug = '-d' in sys.argv
-    verbose = '-v' in sys.argv
-    preload_grid = '-p' in sys.argv
+if __name__ == "__main__":
+    debug = "-d" in sys.argv
+    verbose = "-v" in sys.argv
+    preload_grid = "-p" in sys.argv
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
     motor_column = Motor("D")  # Motor for the column pusher is in port D
