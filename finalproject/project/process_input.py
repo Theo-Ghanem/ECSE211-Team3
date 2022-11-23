@@ -3,8 +3,6 @@
 from time import sleep
 
 from utils.brick import TouchSensor
-import colorama
-from colorama import Fore
 
 
 def reprint_partial_grid(grid):
@@ -30,14 +28,10 @@ def validate_grid(grid, verbose):
             elif cell == 0:
                 count_total += 1
     if count_1 > 15:
-        print(
-            Fore.RED
-            + "Invalid grid. Please enter a grid with at most 15 1's."
-            + Fore.BLACK
-        )
+        print("Invalid grid. Please enter a grid with at most 15 1's.")
         exit()
     elif count_total != 25:
-        print(Fore.RED + "Invalid grid. Please enter 25 binary inputs." + Fore.BLACK)
+        print("Invalid grid. Please enter 25 binary inputs.")
         exit()
     elif verbose:
         print("Grid is valid.\n")
@@ -88,22 +82,14 @@ def collect_grid_terminal_input(grid):
             if num_inputs != 5:
                 total_ones = ones_before_input
                 valid_input = False
-                print(
-                    Fore.RED
-                    + "Invalid input. Please enter a list of 5 binary inputs with spaces as delimiters.\n"
-                    + Fore.BLACK
-                )
+                print("Invalid input. Please enter a list of 5 binary inputs with spaces as delimiters.\n")
                 reprint_partial_grid(grid)
                 continue
 
             if total_ones > 15:
                 total_ones = ones_before_input
                 valid_input = False
-                print(
-                    Fore.RED
-                    + "Invalid grid. Please enter a grid with at most 15 1's.\n"
-                    + Fore.BLACK
-                )
+                print("Invalid grid. Please enter a grid with at most 15 1's.\n")
                 reprint_partial_grid(grid)
                 continue
 
