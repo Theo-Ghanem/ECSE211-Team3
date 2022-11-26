@@ -4,7 +4,7 @@ from utils.brick import Motor
 from time import sleep
 
 def dispense_cube(motor):
-    motor.set_limits(dps=80)
+    motor.set_limits(dps=100)
     motor.set_position_relative(170)
     # while motor.is_moving():
     #     sleep(0.1)
@@ -19,5 +19,5 @@ def dispense_cube(motor):
     motor.set_power(0)
 
 motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
-motor_dispenser.set_limits(dps=80)  # speed of motor
+motor_dispenser.set_limits(dps=100)  # speed of motor
 dispense_cube(motor_dispenser)
