@@ -9,13 +9,13 @@ def dispense_cube(motor):
     # while motor.is_moving():
     #     sleep(0.1)
     # print("push should be done")
-    sleep(1.5)
+    sleep(1.75)
     # motor.set_limits(dps=80) 
     motor.set_position_relative(-170)
     # while motor.is_moving():
     #     sleep(0.1)
     # print("retraction should be done",-distance)
-    sleep(1.5)
+    sleep(1.75)
     motor.set_power(0)
 
 motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
