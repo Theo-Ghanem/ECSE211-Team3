@@ -10,7 +10,7 @@ def dispense_cube(motor):
         sleep(0.1)
     # print("push should be done")
     sleep(1.25)
-    motor.set_limits(dps=250)
+    motor.set_limits(dps=60)
     motor.set_position_relative(-170)
     while motor.is_moving():
         sleep(0.1)
