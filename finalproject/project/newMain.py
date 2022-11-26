@@ -58,18 +58,18 @@ def push_motor_distance(motor, distance, delay=3):
 
 
 def dispense_cube(motor):
-    motor.set_limits(dps=0)
+    motor.set_limits(dps=80)
     motor.set_position_relative(170)
     while motor.is_moving():
         sleep(0.1)
     # print("push should be done")
-    sleep(1.25)
-    motor.set_limits(dps=250)
+    sleep(1.5)
+    motor.set_limits(dps=80)
     motor.set_position_relative(-170)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
-    sleep(1.25)
+    sleep(1.5)
 
 
 def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
