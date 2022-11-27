@@ -35,7 +35,7 @@ preloaded_grid = [  # test column
 # ]
 
 
-column_distances = [118, 130, 159, 159, 200]  # second pusher
+column_distances = [118, 130, 140, 159, 200]  # second pusher
 row_distances = [300, 430, 530, 635, 740]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 tone2 = Sound(duration=0.5, volume=90, pitch="D4")
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
-    tone1.play()
+    # tone1.play()
     check_loaded(colour_sensor, tone2)
     
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
