@@ -110,10 +110,10 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
 
 def check_loaded(color_sensor, tone2):
     print("doing things")
-    sd = color_sensor.get_value()
-    print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
     loaded = False
     while(not loaded):
+        sd = color_sensor.get_value()
+        print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
         if (sd[0] > 50 and sd[1] > 50 and sd [2] > 50):
             tone2.play()
             return
