@@ -42,7 +42,7 @@ preloaded_grid = [  # test arrow
 
 
 column_distances = [120, 138, 158, 175, 205]  # second pusher
-row_distances = [300, 400, 535, 635, 770]  # first pusher #new
+row_distances = [300, 400, 535, 635, 765]  # first pusher #new
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
 tone2 = Sound(duration=1, volume=90, pitch="D4")
 
@@ -116,7 +116,8 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
 
 
 def check_loaded(color_sensor, tone2, verbose):
-    print("doing things")
+    if (verbose):
+        print("doing things")
     loaded = False
     count = 0
     while (not loaded):
