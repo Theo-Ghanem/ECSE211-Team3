@@ -119,7 +119,7 @@ def check_loaded(color_sensor, tone2):
         # if ((sd[0] > 40 and sd[1] > 40 and sd [2] > 40) or (sd[0] > 100 or sd[1] > 100 or sd[2] > 100)):
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
         print(dist)
-        if(dist>40):
+        if(dist>30):
             count += 1
             if count >= 3:
                 tone2.play()
