@@ -7,7 +7,7 @@ from process_input import (
     print_grid,
     validate_grid,
 )
-from utils.brick import Motor, TouchSensor, wait_ready_sensors
+from utils.brick import Motor, TouchSensor, EV3ColorSensor, wait_ready_sensors
 from utils.sound import Sound
 # preloaded_grid = [
 #     [1, 0, 1, 0, 0],
@@ -38,8 +38,9 @@ column_distances = [122, 141, 159, 181, 218]  # second pusher
 # row_distances = [70, 82, 92, 105, 128]  # first pusher #old
 # row_distances = [88, 100, 110, 128, 150]  # first pusher #new
 # row_distances = [-40, -50, -64, -72, -85]  # first pusher #new
-row_distances = [-310, -430, -530, -635, -740]  # first pusher #new
+row_distances = [310, 430, 530, 635, 740]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
+tone2 = Sound(duration=0.5, volume=90, pitch="D4")
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -71,6 +72,7 @@ def dispense_cube(motor):
 
 
 def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
+    row_motor.set_position_relative(-100)
     for i in range(4, -1, -1):
         cube_dispensed = False
         for j in range(4, -1, -1):
@@ -82,7 +84,7 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
                 dispense_cube(dispenser_motor)
                 if debug:
                     input("About to push cube " + str(i) + " " + str(j))
-                push_motor_distance(row_motor, -row_distances[j])
+                push_motor_distance(row_motor, row_distances[j])
         if cube_dispensed:
             if debug:
                 input("About to push column " + str(i))
@@ -106,6 +108,19 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     print_grid(grid)
     return grid
 
+def check_loaded(color_sensor, tone1):
+    print("doing things")
+    sd = color_sensor.get_value()
+    print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
+    loaded = False
+    while(not loaded):
+        if (sd[0] < 50 and sd[1] < 50 and sd [2] < 50):
+            tone2.play()
+            return
+        else:
+            print("waiting for all cubes")
+            sleep(2)
+    return None
 
 if __name__ == "__main__":
     debug = "-d" in sys.argv
@@ -113,6 +128,7 @@ if __name__ == "__main__":
     preload_grid = "-p" in sys.argv
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
+    colour_sensor = EV3ColorSensor(2)
     motor_column = Motor("D")  # Motor for the column pusher is in port D
     motor_column.set_limits(dps=70)  # speed of motor
     motor_row = Motor("B")  # Motor for the row pusher is in port B
@@ -121,7 +137,8 @@ if __name__ == "__main__":
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
     tone1.play()
-
+    check_loaded(colour_sensor, tone2)
+    
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
     if debug:
