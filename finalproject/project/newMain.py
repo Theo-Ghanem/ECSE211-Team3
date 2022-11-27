@@ -112,6 +112,7 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
 def check_loaded(color_sensor, tone2):
     print("doing things")
     loaded = False
+    count = 0
     while(not loaded):
         sd = color_sensor.get_value()
         print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
@@ -119,11 +120,16 @@ def check_loaded(color_sensor, tone2):
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
         print(dist)
         if(dist>40):
-            tone2.play()
-            return
+            count += 1
+            if count >= 3:
+                tone2.play()
+                return
+            else:
+                sleep(1)
         else:
+            count=0
             print("waiting for all cubes")
-            sleep(2)
+            sleep(1)
     return None
 
 if __name__ == "__main__":
