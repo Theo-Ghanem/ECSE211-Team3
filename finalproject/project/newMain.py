@@ -1,5 +1,6 @@
 import sys
 from time import sleep
+import math
 
 from process_input import (
     collect_grid_terminal_input,
@@ -114,7 +115,10 @@ def check_loaded(color_sensor, tone2):
     while(not loaded):
         sd = color_sensor.get_value()
         print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
-        if ((sd[0] > 40 and sd[1] > 40 and sd [2] > 40) or (sd[0] > 100 or sd[1] > 100 or sd[2] > 100)):
+        # if ((sd[0] > 40 and sd[1] > 40 and sd [2] > 40) or (sd[0] > 100 or sd[1] > 100 or sd[2] > 100)):
+        dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
+        print(dist)
+        if(dist>20):
             tone2.play()
             return
         else:
