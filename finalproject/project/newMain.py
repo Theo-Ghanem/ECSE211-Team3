@@ -39,7 +39,7 @@ column_distances = [122, 141, 159, 181, 218]  # second pusher
 # row_distances = [88, 100, 110, 128, 150]  # first pusher #new
 # row_distances = [-40, -50, -64, -72, -85]  # first pusher #new
 row_distances = [-310, -430, -530, -635, -740]  # first pusher #new
-tone1 = Sound(duration=0.5, volume=80, pitch="C4")
+tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 
 
 def push_motor_distance(motor, distance, delay=3):
