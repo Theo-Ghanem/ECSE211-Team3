@@ -18,13 +18,13 @@ from utils.sound import Sound
 #     [0, 0, 1, 0, 1]
 # ]
 
-# preloaded_grid = [  # test arrow
-#     [1, 1, 1, 1, 1],
-#     [1, 1, 0, 0, 0],
-#     [1, 0, 1, 0, 0],
-#     [1, 0, 0, 1, 0],
-#     [1, 0, 0, 0, 1],
-# ]
+preloaded_grid = [  # test arrow
+    [1, 1, 1, 1, 1],
+    [1, 1, 0, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 0, 1],
+]
 
 # preloaded_grid = [  # test column
 #     [1, 0, 0, 0, 0],
@@ -34,13 +34,13 @@ from utils.sound import Sound
 #     [1, 0, 0, 0, 0]
 # ]
 
-preloaded_grid = [  # test row
-    [1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-]
+# preloaded_grid = [  # test row
+#     [1, 1, 1, 1, 1],
+#     [0, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 0]
+# ]
 
 
 column_distances = [120, 138, 158, 175, 205]  # second pusher
