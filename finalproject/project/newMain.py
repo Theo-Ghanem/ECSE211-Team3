@@ -18,21 +18,21 @@ from utils.sound import Sound
 #     [0, 0, 1, 0, 1]
 # ]
 
-preloaded_grid = [  # test column
-    [1, 1, 1, 1, 1],
-    [1, 1, 0, 0, 0],
-    [1, 0, 1, 0, 0],
-    [1, 0, 0, 1, 0],
-    [1, 0, 0, 0, 1],
-]
-
-# preloaded_grid = [  # test row
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0]
+# preloaded_grid = [  # test column
+#     [1, 1, 1, 1, 1],
+#     [1, 1, 0, 0, 0],
+#     [1, 0, 1, 0, 0],
+#     [1, 0, 0, 1, 0],
+#     [1, 0, 0, 0, 1],
 # ]
+
+preloaded_grid = [  # test row
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0]
+]
 
 
 column_distances = [100, 123, 145, 160, 200]  # second pusher
@@ -62,7 +62,7 @@ def dispense_cube(motor):
     motor.set_position_relative(170)
     # print("push should be done")
     sleep(1.75)
-    # motor.set_limits(dps=80) 
+    # motor.set_limits(dps=80)
     motor.set_position_relative(-170)
     # print("retraction should be done",-distance)
     sleep(1.75)
@@ -106,16 +106,17 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     print_grid(grid)
     return grid
 
+
 def check_loaded(color_sensor, tone2):
     print("doing things")
     loaded = False
     count = 0
-    while(not loaded):
+    while (not loaded):
         sd = color_sensor.get_value()
-        print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
+        print('{:d},{:d},{:d},{:d}\n'.format(sd[0], sd[1], sd[2], sd[3]))
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
         print(dist)
-        if(dist>25):
+        if (dist > 25):
             count += 1
             if count >= 3:
                 tone2.play()
@@ -123,10 +124,11 @@ def check_loaded(color_sensor, tone2):
             else:
                 sleep(0.3)
         else:
-            count=0
+            count = 0
             print("waiting for all cubes")
             sleep(0.3)
     return None
+
 
 if __name__ == "__main__":
     debug = "-d" in sys.argv
@@ -144,7 +146,7 @@ if __name__ == "__main__":
     wait_ready_sensors(verbose)
     # tone1.play()
     check_loaded(colour_sensor, tone2)
-    
+
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
     if debug:
