@@ -125,11 +125,11 @@ def check_loaded(color_sensor, tone2):
                 tone2.play()
                 return
             else:
-                sleep(1)
+                sleep(0.3)
         else:
             count=0
             print("waiting for all cubes")
-            sleep(1)
+            sleep(0.3)
     return None
 
 if __name__ == "__main__":
