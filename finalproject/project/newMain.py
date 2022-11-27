@@ -36,7 +36,7 @@ preloaded_grid = [  # test column
 
 
 column_distances = [90, 123, 145, 160, 200]  # second pusher
-row_distances = [300, 400, 530, 635, 740]  # first pusher #new
+row_distances = [305, 400, 530, 635, 745]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 tone2 = Sound(duration=0.5, volume=90, pitch="D4")
 
@@ -115,7 +115,7 @@ def check_loaded(color_sensor, tone2):
         print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
         print(dist)
-        if(dist>30):
+        if(dist>25):
             count += 1
             if count >= 3:
                 tone2.play()
