@@ -8,7 +8,7 @@ from process_input import (
     validate_grid,
 )
 from utils.brick import Motor, TouchSensor, wait_ready_sensors
-
+from utils.sound import Sound
 # preloaded_grid = [
 #     [1, 0, 1, 0, 0],
 #     [0, 1, 1, 0, 0],
@@ -39,6 +39,7 @@ column_distances = [122, 141, 159, 181, 218]  # second pusher
 # row_distances = [88, 100, 110, 128, 150]  # first pusher #new
 # row_distances = [-40, -50, -64, -72, -85]  # first pusher #new
 row_distances = [-310, -430, -530, -635, -740]  # first pusher #new
+tone1 = Sound(duration=0.5, volume=80, pitch="C4")
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -119,6 +120,7 @@ if __name__ == "__main__":
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
+    tone1.play()
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
