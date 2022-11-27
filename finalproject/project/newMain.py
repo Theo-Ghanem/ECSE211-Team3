@@ -114,7 +114,7 @@ def check_loaded(color_sensor, tone2):
     print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
     loaded = False
     while(not loaded):
-        if (sd[0] < 50 and sd[1] < 50 and sd [2] < 50):
+        if (sd[0] > 50 and sd[1] > 50 and sd [2] > 50):
             tone2.play()
             return
         else:
