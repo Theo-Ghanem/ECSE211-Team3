@@ -35,7 +35,7 @@ preloaded_grid = [  # test row
 ]
 
 
-column_distances = [115, 130, 145, 180, 205]  # second pusher
+column_distances = [120, 140, 155, 175, 205]  # second pusher
 row_distances = [310, 400, 530, 635, 745]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 tone2 = Sound(duration=0.5, volume=90, pitch="D4")
@@ -59,11 +59,11 @@ def push_motor_distance(motor, distance, delay=3):
 
 def dispense_cube(motor):
     motor.set_limits(dps=100)
-    motor.set_position_relative(170)
+    motor.set_position_relative(160)
     # print("push should be done")
     sleep(1.75)
     # motor.set_limits(dps=80)
-    motor.set_position_relative(-170)
+    motor.set_position_relative(-160)
     # print("retraction should be done",-distance)
     sleep(1.75)
     motor.set_power(0)
