@@ -36,10 +36,7 @@ preloaded_grid = [  # test column
 
 
 column_distances = [122, 141, 159, 181, 218]  # second pusher
-# row_distances = [70, 82, 92, 105, 128]  # first pusher #old
-# row_distances = [88, 100, 110, 128, 150]  # first pusher #new
-# row_distances = [-40, -50, -64, -72, -85]  # first pusher #new
-row_distances = [310, 430, 530, 635, 740]  # first pusher #new
+row_distances = [300, 430, 530, 635, 740]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 tone2 = Sound(duration=0.5, volume=90, pitch="D4")
 
@@ -116,7 +113,6 @@ def check_loaded(color_sensor, tone2):
     while(not loaded):
         sd = color_sensor.get_value()
         print('{:d},{:d},{:d},{:d}\n'.format(sd[0],sd[1],sd[2],sd[3]))
-        # if ((sd[0] > 40 and sd[1] > 40 and sd [2] > 40) or (sd[0] > 100 or sd[1] > 100 or sd[2] > 100)):
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
         print(dist)
         if(dist>30):
