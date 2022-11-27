@@ -35,7 +35,7 @@ preloaded_grid = [  # test row
 ]
 
 
-column_distances = [100, 123, 145, 160, 200]  # second pusher
+column_distances = [115, 130, 145, 180, 205]  # second pusher
 row_distances = [310, 400, 530, 635, 745]  # first pusher #new
 tone1 = Sound(duration=0.5, volume=90, pitch="C4")
 tone2 = Sound(duration=0.5, volume=90, pitch="D4")
