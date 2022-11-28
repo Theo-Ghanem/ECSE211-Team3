@@ -3,7 +3,7 @@ from utils.brick import Motor
 
 
 
-distances = [120, 138, 158, 175, 205]
+distances = [-120, -138, -158, -175, -205]
 
 def push_motor_distance(motor, distance, delay=3):
     motor_start_position = motor.get_position()
