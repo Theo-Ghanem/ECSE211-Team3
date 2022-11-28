@@ -1,15 +1,13 @@
+import math
 import sys
 from time import sleep
-import math
 
-from process_input import (
-    collect_grid_terminal_input,
-    collect_grid_touch_sensor_input,
-    print_grid,
-    validate_grid,
-)
-from utils.brick import Motor, TouchSensor, EV3ColorSensor, wait_ready_sensors
+from process_input import (collect_grid_terminal_input,
+                           collect_grid_touch_sensor_input, print_grid,
+                           validate_grid)
+from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
 from utils.sound import Sound
+
 # preloaded_grid = [
 #     [1, 0, 1, 0, 0],
 #     [0, 1, 1, 0, 0],
@@ -44,9 +42,9 @@ preloaded_grid = [  # test arrow
 
 
 column_distances = [120, 138, 158, 175, 205]  # second pusher
-row_distances = [300, 400, 530, 635, 745]  # first pusher #new
-tone1 = Sound(duration=0.5, volume=90, pitch="C4")
-tone2 = Sound(duration=0.5, volume=90, pitch="D4")
+row_distances = [300, 400, 535, 635, 763]  # first pusher #new
+# tone1 = Sound(duration=1, volume=90, pitch="C4")
+tone2 = Sound(duration=1, volume=90, pitch="D4")
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -65,19 +63,21 @@ def push_motor_distance(motor, distance, delay=3):
     sleep(delay)
 
 
-def dispense_cube(motor):
+def dispense_cube(motor, verbose):
     motor.set_limits(dps=100)
     motor.set_position_relative(160)
-    # print("push should be done")
+    if (verbose):
+        print("push should be done")
     sleep(1.75)
-    # motor.set_limits(dps=80)
+
     motor.set_position_relative(-160)
-    # print("retraction should be done",-distance)
+    if (verbose):
+        print("retraction should be done")
     sleep(1.75)
     motor.set_power(0)
 
 
-def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
+def run_dispensing(grid, dispenser_motor, row_motor, column_motor, verbose):
     row_motor.set_position_relative(-100)
     for i in range(4, -1, -1):
         cube_dispensed = False
@@ -87,7 +87,7 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor):
                     input("About to dispense cube " + str(i) + " " + str(j))
                 cube_dispensed = True
                 # push_motor_distance(dispenser_motor,180,1.25)
-                dispense_cube(dispenser_motor)
+                dispense_cube(dispenser_motor, verbose)
                 if debug:
                     input("About to push cube " + str(i) + " " + str(j))
                 push_motor_distance(row_motor, row_distances[j])
@@ -115,15 +115,17 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     return grid
 
 
-def check_loaded(color_sensor, tone2):
-    print("doing things")
+def check_loaded(color_sensor, tone2, verbose):
+    if (verbose):
+        print("doing things")
     loaded = False
     count = 0
     while (not loaded):
         sd = color_sensor.get_value()
-        print('{:d},{:d},{:d},{:d}\n'.format(sd[0], sd[1], sd[2], sd[3]))
         dist = math.sqrt(sd[0]**2+sd[1]**2+sd[2]**2)
-        print(dist)
+        if (verbose):
+            print('{:d},{:d},{:d},{:d}\n'.format(sd[0], sd[1], sd[2], sd[3]))
+            print(dist)
         if (dist > 25):
             count += 1
             if count >= 3:
@@ -133,7 +135,8 @@ def check_loaded(color_sensor, tone2):
                 sleep(0.3)
         else:
             count = 0
-            print("waiting for all cubes")
+            if (verbose):
+                print("waiting for all cubes")
             sleep(0.3)
     return None
 
@@ -152,8 +155,7 @@ if __name__ == "__main__":
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
-    # tone1.play()
-    check_loaded(colour_sensor, tone2)
+    check_loaded(colour_sensor, tone2, verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
@@ -163,4 +165,4 @@ if __name__ == "__main__":
     if verbose:
         print("\nStarting pistons...\n")
     # print(motor_column.get_position())
-    run_dispensing(grid, motor_dispenser, motor_row, motor_column)
+    run_dispensing(grid, motor_dispenser, motor_row, motor_column, verbose)
