@@ -24,5 +24,5 @@ if __name__ == "__main__":
     rev_distances = distances
     rev_distances.reverse()
     # for distance in rev_distances:
-    push_motor_distance(motor,-90)
+    push_motor_distance(motor,-80)
     
