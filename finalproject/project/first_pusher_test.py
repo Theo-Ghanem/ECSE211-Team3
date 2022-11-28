@@ -21,7 +21,7 @@ def push_motor_distance(motor, distance, delay=3):
     while motor.is_moving():
         sleep(0.1)
     sleep(delay)
-    motor.set_position(motor_start_position)
+    motor.set_position(motor_start_position-1)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
