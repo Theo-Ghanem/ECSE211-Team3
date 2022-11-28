@@ -8,13 +8,6 @@ from process_input import (collect_grid_terminal_input,
 from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
 from utils.sound import Sound
 
-# preloaded_grid = [
-#     [1, 0, 1, 0, 0],
-#     [0, 1, 1, 0, 0],
-#     [0, 0, 1, 0, 0],
-#     [0, 0, 1, 1, 0],
-#     [0, 0, 1, 0, 1]
-# ]
 
 preloaded_grid = [  # test arrow
     [1, 1, 1, 1, 1],
@@ -24,25 +17,10 @@ preloaded_grid = [  # test arrow
     [1, 0, 0, 0, 1],
 ]
 
-# preloaded_grid = [  # test column
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0]
-# ]
-
-# preloaded_grid = [  # test row
-#     [1, 1, 1, 1, 1],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0]
-# ]
 
 
 column_distances = [120, 138, 158, 175, 205]  # second pusher
-row_distances = [255, 363, 480, 605, 735]  # first pusher #new 300, 400, 535, 635, 763]
+row_distances = [255, 375, 480, 605, 735]  # first pusher #new 300, 400, 535, 635, 763]
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
 tone2 = Sound(duration=1, volume=90, pitch="D4")
 
