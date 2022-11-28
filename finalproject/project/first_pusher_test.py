@@ -3,7 +3,8 @@ from utils.brick import Motor
 
 
 
-distances = [255, 375, 480, 605, 735]
+# distances = [255, 375, 480, 605, 735]
+distances = [375, 375, 375, 375, 375]
 
 def dispense_cube(motor):
     motor.set_limits(dps=100)
