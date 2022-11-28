@@ -5,7 +5,7 @@ from utils.brick import Motor
 
 distances = [-120, -138, -158, -175, -205]
 
-def push_motor_distance(motor, distance, delay=3):
+def push_motor_distance(motor, distance, delay=7):
     motor_start_position = motor.get_position()
     motor.set_position(motor_start_position + distance)
     # motor.set_position_relative(distance)
