@@ -3,8 +3,7 @@ from utils.brick import Motor
 
 
 
-# distances = [255, 375, 480, 605, 735]
-distances = [375, 375, 375, 375, 375]
+distances = [255, 375, 480, 605, 735]
 
 def dispense_cube(motor):
     motor.set_limits(dps=100)
@@ -22,7 +21,7 @@ def push_motor_distance(motor, distance, delay=3):
     while motor.is_moving():
         sleep(0.1)
     sleep(delay)
-    motor.set_position(motor_start_position-1)
+    motor.set_position(motor_start_position)
     while motor.is_moving():
         sleep(0.1)
     # print("retraction should be done",-distance)
