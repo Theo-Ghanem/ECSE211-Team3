@@ -82,7 +82,9 @@ def collect_grid_terminal_input(grid):
             if num_inputs != 5:
                 total_ones = ones_before_input
                 valid_input = False
-                print("Invalid input. Please enter a list of 5 binary inputs with spaces as delimiters.\n")
+                print(
+                    "Invalid input. Please enter a list of 5 binary inputs with spaces as delimiters.\n"
+                )
                 reprint_partial_grid(grid)
                 continue
 
