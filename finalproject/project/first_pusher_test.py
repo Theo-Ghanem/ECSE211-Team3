@@ -3,7 +3,7 @@ from utils.brick import Motor
 
 
 
-distances = [300, 400, 530, 635, 745]  # first pusher #new
+distances = [300, 400, 530, 635, 745]
 
 
 
@@ -23,6 +23,8 @@ def push_motor_distance(motor, distance, delay=3):
 if __name__ == "__main__":
     motor_row = Motor("B")  # Motor for the row pusher is in port B
     motor_row.set_limits(dps=360)
-    for distance in distances.reverse():
+    rev_distances = distances
+    rev_distances.reverse()
+    for distance in rev_distances:
         push_motor_distance(motor_row,distance)
     
