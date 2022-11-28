@@ -23,6 +23,6 @@ if __name__ == "__main__":
     motor.set_limits(dps=70)
     rev_distances = distances
     rev_distances.reverse()
-    for distance in rev_distances:
-        push_motor_distance(motor,distance)
+    # for distance in rev_distances:
+    push_motor_distance(motor,distances[3])
     
