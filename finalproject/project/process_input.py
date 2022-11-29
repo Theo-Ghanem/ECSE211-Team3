@@ -174,12 +174,11 @@ def collect_grid_touch_sensor_input(
         if total_ones > 15:
             print(
                 "\033[31m"
-                + "-> Invalid grid. Please enter a grid with at most 15 1's.\n"
+                + "Invalid grid. Please enter a grid with at most 15 1's.\n"
                 + "\033[0;0m"
             )
             exit()
 
     # capture all exceptions including KeyboardInterrupt (Ctrl-C)
     except BaseException as e:
-        print(e)
         exit()

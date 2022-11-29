@@ -9,7 +9,7 @@ from process_input import (
 )
 from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
 
-#! from utils.sound import Sound 
+from utils.sound import Sound 
 
 
 preloaded_grid = [  # test arrow
@@ -24,7 +24,7 @@ preloaded_grid = [  # test arrow
 column_distances = [120, 138, 158, 175, 205]  # second pusher
 row_distances = [255, 375, 480, 605, 735]  # first pusher #new 300, 400, 535, 635, 763]
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
-#! tone2 = Sound(duration=1, volume=90, pitch="D4")
+tone2 = Sound(duration=1, volume=90, pitch="D4")
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
 
-    #! check_loaded(colour_sensor, tone2, verbose)
+    check_loaded(colour_sensor, tone2, verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
