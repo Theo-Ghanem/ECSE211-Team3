@@ -6,10 +6,10 @@ from process_input import (
     collect_grid_terminal_input,
     collect_grid_touch_sensor_input,
     print_grid,
-    validate_grid,
 )
 from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
-from utils.sound import Sound
+
+#! from utils.sound import Sound 
 
 
 preloaded_grid = [  # test arrow
@@ -24,7 +24,7 @@ preloaded_grid = [  # test arrow
 column_distances = [120, 138, 158, 175, 205]  # second pusher
 row_distances = [255, 375, 480, 605, 735]  # first pusher #new 300, 400, 535, 635, 763]
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
-tone2 = Sound(duration=1, volume=90, pitch="D4")
+#! tone2 = Sound(duration=1, volume=90, pitch="D4")
 
 
 def push_motor_distance(motor, distance, delay=3):
@@ -90,14 +90,13 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     else:
         grid = preloaded_grid
 
-    validate_grid(grid, verbose)
     print_grid(grid)
     return grid
 
 
 def check_loaded(color_sensor, tone2, verbose):
     if verbose:
-        print("doing things")
+        print("Checking for 15 cubes in the dispenser")
     loaded = False
     count = 0
     while not loaded:
@@ -125,6 +124,7 @@ if __name__ == "__main__":
     debug = "-d" in sys.argv
     verbose = "-v" in sys.argv
     preload_grid = "-p" in sys.argv
+
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
     colour_sensor = EV3ColorSensor(2)
@@ -135,14 +135,15 @@ if __name__ == "__main__":
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
-    check_loaded(colour_sensor, tone2, verbose)
+
+    #! check_loaded(colour_sensor, tone2, verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
     if debug:
         input("Press enter to proceed...")
+        
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
-    # print(motor_column.get_position())
     run_dispensing(grid, motor_dispenser, motor_row, motor_column, verbose)
