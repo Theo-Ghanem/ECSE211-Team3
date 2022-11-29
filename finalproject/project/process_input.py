@@ -1,4 +1,3 @@
-from functools import reduce
 from time import sleep
 
 from utils.brick import TouchSensor
@@ -25,7 +24,7 @@ def get_char():
 
 def get_input_line():
     """
-    Reads 5 binary inputs from the user, automatically spacing the inputs out on the screen, with input validation for only binary values. 
+    Reads 5 binary inputs from the user, automatically spacing the inputs out on the screen, with input validation for only binary values.
     Keyboard interrupts (ctrl-c) are caught.
 
     Returns:
@@ -82,7 +81,7 @@ def print_grid(grid):
 
 def collect_grid_terminal_input(grid):
     """
-    Collects the grid from the user in the terminal.  The user is prompted to enter 25 binary inputs. 
+    Collects the grid from the user in the terminal.  The user is prompted to enter 25 binary inputs.
     Input validation for binary values, maximum of 15 1s, and total of 25 inputs.
 
     Args:
@@ -122,7 +121,7 @@ def collect_grid_touch_sensor_input(
     grid, touch_sensor_0: TouchSensor, touch_sensor_1: TouchSensor, verbose
 ):
     """
-    Collects the grid from the user using the touch sensors.  The user is prompted to enter 25 binary inputs. 
+    Collects the grid from the user using the touch sensors.  The user is prompted to enter 25 binary inputs.
     Input validation for a maximum of 15 1s.
 
     Args:
@@ -131,7 +130,7 @@ def collect_grid_touch_sensor_input(
         touch_sensor_1 (TouchSensor): touch sensor corresponding to input 1
         verbose (bool): whether to print extra information to the screen
     """
-    
+
     try:
         total_ones = 0
         print("  v v v v v")
