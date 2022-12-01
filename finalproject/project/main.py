@@ -12,12 +12,19 @@ from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
 from utils.sound import Sound 
 
 
+# preloaded_grid = [  # test arrow
+#     [1, 1, 1, 1, 1],
+#     [1, 1, 0, 0, 0],
+#     [1, 0, 1, 0, 0],
+#     [1, 0, 0, 1, 0],
+#     [1, 0, 0, 0, 1],
+# ]
 preloaded_grid = [  # test arrow
-    [1, 1, 1, 1, 1],
-    [1, 1, 0, 0, 0],
-    [1, 0, 1, 0, 0],
-    [1, 0, 0, 1, 0],
-    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
 ]
 
 
