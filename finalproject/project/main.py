@@ -114,7 +114,7 @@ def check_loaded(color_sensor, tone2, verbose):
             print(dist)
         if dist > 25:
             count += 1
-            if count >= 3:
+            if count >= 6:
                 tone2.play()
                 return
             else:
