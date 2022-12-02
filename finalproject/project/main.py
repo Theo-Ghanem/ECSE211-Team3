@@ -116,7 +116,10 @@ def check_loaded(color_sensor, tone2, verbose):
         if dist > 25:
             count += 1
             if count >= 6:
-                tone2.play()
+                wave_object = sa.WaveObject.from_wave_file('./utils/wav/starting_design.wav')
+
+                play_object = wave_object.play()
+                play_object.wait_done()
                 return
             else:
                 sleep(0.3)
