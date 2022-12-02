@@ -9,7 +9,8 @@ from process_input import (
 )
 from utils.brick import EV3ColorSensor, Motor, TouchSensor, wait_ready_sensors
 
-from playsound import playsound
+from utils.sound import Sound
+import simpleaudio as sa
 
 
 preloaded_grid = [  # test arrow
@@ -143,10 +144,15 @@ if __name__ == "__main__":
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
 
-    playsound("./utils/mp3/loadcubes.mp3")
+    wave_object = sa.WaveObject.from_wave_file('./utils/wav/loadcubes.wav')
+
+    play_object = wave_object.play()
+    play_object.wait_done()
+
     check_loaded(colour_sensor, tone2, verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
+
 
     if debug:
         input("Press enter to proceed...")
