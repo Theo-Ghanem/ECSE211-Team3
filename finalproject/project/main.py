@@ -164,3 +164,8 @@ if __name__ == "__main__":
     if verbose:
         print("\nStarting pistons...\n")
     run_dispensing(grid, motor_dispenser, motor_row, motor_column, verbose)
+
+    wave_object = sa.WaveObject.from_wave_file('./utils/wav/mosaic_ready.wav')
+
+    play_object = wave_object.play()
+    play_object.wait_done()
