@@ -30,7 +30,8 @@ preloaded_grid = [  # test arrow
 
 
 column_distances = [120, 138, 155, 174.5, 206]  # second pusher
-row_distances = [254, 374, 479, 604, 734]  # first pusher #new 300, 400, 535, 635, 763]
+# first pusher #new 300, 400, 535, 635, 763]
+row_distances = [254, 374, 479, 604, 734]
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
 tone2 = Sound(duration=1, volume=90, pitch="D4")
 
@@ -116,7 +117,8 @@ def check_loaded(color_sensor, tone2, verbose):
         if dist > 25:
             count += 1
             if count >= 6:
-                wave_object = sa.WaveObject.from_wave_file('./utils/wav/starting_design.wav')
+                wave_object = sa.WaveObject.from_wave_file(
+                    './utils/wav/starting_design.wav')
 
                 play_object = wave_object.play()
                 play_object.wait_done()
@@ -140,9 +142,9 @@ if __name__ == "__main__":
     touch_sensor_1 = TouchSensor(4)
     colour_sensor = EV3ColorSensor(2)
     motor_column = Motor("D")  # Motor for the column pusher is in port D
-    motor_column.set_limits(dps=70)  # speed of motor
+    motor_column.set_limits(dps=100)  # speed of motor
     motor_row = Motor("B")  # Motor for the row pusher is in port B
-    motor_row.set_limits(dps=360)
+    motor_row.set_limits(dps=500)
     motor_dispenser = Motor("C")  # Motor for the dispenser is in port C
     motor_dispenser.set_limits(dps=60)  # speed of motor
     wait_ready_sensors(verbose)
@@ -156,10 +158,9 @@ if __name__ == "__main__":
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
-
     if debug:
         input("Press enter to proceed...")
-        
+
     # Run the program
     if verbose:
         print("\nStarting pistons...\n")
