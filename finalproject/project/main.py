@@ -29,7 +29,7 @@ preloaded_grid = [  # test arrow
 # ]
 
 
-column_distances = [120, 138, 155, 174.5, 206]  # second pusher
+column_distances = [120, 136, 154, 175, 206]  # second pusher
 # first pusher #new 300, 400, 535, 635, 763]
 row_distances = [254, 374, 479, 604, 734]
 # tone1 = Sound(duration=1, volume=90, pitch="C4")
