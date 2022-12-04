@@ -36,7 +36,7 @@ row_distances = [254, 374, 479, 604, 734]
 tone2 = Sound(duration=1, volume=90, pitch="D4")
 
 
-def push_motor_distance(motor, distance, delay=3):
+def push_motor_distance(motor, distance, delay=2):
     motor_start_position = motor.get_position()
     motor.set_position(motor_start_position + distance)
     # motor.set_position_relative(distance)
