@@ -147,6 +147,7 @@ if __name__ == "__main__":
     """
     The main function that runs the program. It will initialize all the motoros and sensors, 
     wait for the cubes to be loaded, collect the grid from the user and then run the dispensing.
+    It also plays sounds in between steps.
     """
     debug = "-d" in sys.argv
     verbose = "-v" in sys.argv
