@@ -39,16 +39,8 @@ tone2 = Sound(duration=1, volume=90, pitch="D4")
 def push_motor_distance(motor, distance, delay=2):
     motor_start_position = motor.get_position()
     motor.set_position(motor_start_position + distance)
-    # motor.set_position_relative(distance)
-    while motor.is_moving():
-        sleep(0.1)
-    # print("push should be done",distance)
     sleep(delay)
     motor.set_position(motor_start_position)
-    # motor.set_position_relative(-distance)
-    while motor.is_moving():
-        sleep(0.1)
-    # print("retraction should be done",-distance)
     sleep(delay)
 
 
