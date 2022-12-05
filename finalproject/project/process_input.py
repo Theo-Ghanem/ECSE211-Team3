@@ -9,6 +9,9 @@ def get_char():
     Reads a single character from standard input.  Does not echo to the screen.
     Note that this puts in raw mode, therefore keyboard interrupts (ctrl-c) are not caught.
 
+    This code was taken from:
+    https://stackoverflow.com/questions/510357/how-to-read-a-single-character-from-the-user
+
     Returns:
         str : the character read
     """
