@@ -20,20 +20,10 @@ preloaded_grid = [  # test arrow
     [1, 0, 0, 1, 0],
     [1, 0, 0, 0, 1],
 ]
-# preloaded_grid = [  # test arrow
-#     [1, 0, 0, 0, 1],
-#     [1, 0, 0, 0, 1],
-#     [1, 0, 0, 0, 1],
-#     [1, 0, 0, 0, 1],
-#     [1, 0, 0, 0, 1],
-# ]
 
 
 column_distances = [120, 136, 154, 175, 206]  # second pusher
-# first pusher #new 300, 400, 535, 635, 763]
 row_distances = [254, 374, 479, 604, 734]
-# tone1 = Sound(duration=1, volume=90, pitch="C4")
-tone2 = Sound(duration=1, volume=90, pitch="D4")
 
 
 def push_motor_distance(motor, distance, delay=2):
@@ -78,11 +68,11 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor, verbose):
             push_motor_distance(column_motor, -column_distances[i], 4)
 
 
-def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
+def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid,terminal_input):
     if not preload_grid:
         grid = []
 
-        if debug:
+        if terminal_input or debug:
             collect_grid_terminal_input(grid)
         else:
             collect_grid_touch_sensor_input(
@@ -95,7 +85,7 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     return grid
 
 
-def check_loaded(color_sensor, tone2, verbose):
+def check_loaded(color_sensor, verbose):
     if verbose:
         print("Checking for 15 cubes in the dispenser")
     loaded = False
@@ -129,6 +119,7 @@ if __name__ == "__main__":
     debug = "-d" in sys.argv
     verbose = "-v" in sys.argv
     preload_grid = "-p" in sys.argv
+    terminal_input = "-t" in sys.argv
 
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
@@ -146,9 +137,9 @@ if __name__ == "__main__":
     play_object = wave_object.play()
     play_object.wait_done()
 
-    check_loaded(colour_sensor, tone2, verbose)
+    check_loaded(colour_sensor, verbose)
 
-    grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
+    grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid,terminal_input)
 
     if debug:
         input("Press enter to proceed...")
