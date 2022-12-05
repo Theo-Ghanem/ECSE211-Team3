@@ -54,25 +54,25 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor, verbose):
         cube_dispensed = False
         for j in range(4, -1, -1):
             if grid[i][j] == 1:
-                if debug:
-                    input("About to dispense cube " + str(i) + " " + str(j))
+                if verbose:
+                    print("About to dispense cube " + str(i) + " " + str(j))
                 cube_dispensed = True
                 # push_motor_distance(dispenser_motor,180,1.25)
                 dispense_cube(dispenser_motor, verbose)
-                if debug:
-                    input("About to push cube " + str(i) + " " + str(j))
+                if verbose:
+                    print("About to push cube " + str(i) + " " + str(j))
                 push_motor_distance(row_motor, row_distances[j])
         if cube_dispensed:
-            if debug:
-                input("About to push column " + str(i))
+            if verbose:
+                print("About to push column " + str(i))
             push_motor_distance(column_motor, -column_distances[i], 4)
 
 
-def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid,terminal_input):
+def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     if not preload_grid:
         grid = []
 
-        if terminal_input or debug:
+        if debug:
             collect_grid_terminal_input(grid)
         else:
             collect_grid_touch_sensor_input(
@@ -140,9 +140,6 @@ if __name__ == "__main__":
     check_loaded(colour_sensor, verbose)
 
     grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid,terminal_input)
-
-    if debug:
-        input("Press enter to proceed...")
 
     # Run the program
     if verbose:
