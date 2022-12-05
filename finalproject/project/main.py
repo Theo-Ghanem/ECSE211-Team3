@@ -28,12 +28,13 @@ row_distances = [254, 374, 479, 604, 734]
 
 def push_motor_distance(motor, distance, delay=2):
     """
-    Pushes the motor a certain distance and waits for it to finish and then returns to the original position.
+    Pushes the motor a certain distance and waits for it to finish and then returns 
+    to the original position.
 
     Args:
         motor: The motor to push
         distance: The distance to push the motor
-        delay: The delay the motor should wait for extending and returning
+        delay: The delay the motor should extending and retract for which is 2 seconds by default
     """
     motor_start_position = motor.get_position()
     motor.set_position(motor_start_position + distance)
@@ -48,6 +49,7 @@ def dispense_cube(motor, verbose):
 
     Args:
         motor: The motor to dispense the cube
+        verbose: If the function should print messages at each step
     """
     motor.set_limits(dps=100)
     motor.set_position_relative(160)
@@ -63,9 +65,10 @@ def dispense_cube(motor, verbose):
 
 def run_dispensing(grid, dispenser_motor, row_motor, column_motor, verbose):
     """
-    Runs the dispensing of the cubes. It will push from the far corner to the near corner of the grid. 
-    It will push the cubes out of the dispenser and then push the row motor to the correct position. 
-    This will repeat until the all cubes in a row are dispensed and then the column motor will push them to their final position.
+    Runs the dispensing of the cubes. It will push from the far corner to the near 
+    corner of the grid. It will push the cubes out of the dispenser and then push 
+    the row motor to the correct position. This will repeat until the all cubes in 
+    a row are dispensed and then the column motor will push them to their final position.
 
     Args:
         grid: The grid to dispense the cubes from
@@ -95,8 +98,14 @@ def run_dispensing(grid, dispenser_motor, row_motor, column_motor, verbose):
 
 def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     """
-    Collects the grid from the user. It will either use the preloaded grid or collect 
-    the grid from the user using the touch sensors or the terminal.
+    Collects the grid from the user. It will either use the preloaded grid global variable
+    or collect the grid from the user using the touch sensors or the terminal.
+
+    Args:
+        touch_sensor_0: The touch sensor that represents an empty space
+        touch_sensor_1: The second touch sensor that represents a cube
+        verbose: to pass to the grid collection functions
+        preload_grid: If the function should use the preloaded grid
     """
     if not preload_grid:
         grid = []
@@ -114,17 +123,21 @@ def get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid):
     return grid
 
 
-def check_loaded(color_sensor, verbose):
+def check_loaded(colour_sensor, verbose):
     """
     This function checks if the dispenser is loaded. It will continuously check if 
-    the color sensor detects a color brighter than 25 and when it does it will return.
+    the colour sensor detects a colour brighter than 25 and when it does it will return.
+
+    Args:
+        colour_sensor: The colour sensor to check if the dispenser is loaded
+        verbose: If the function should print the colour it detects and the pythagorean distance
     """
     if verbose:
         print("Checking for 15 cubes in the dispenser")
     loaded = False
     count = 0
     while not loaded:
-        sd = color_sensor.get_value()
+        sd = colour_sensor.get_value()
         dist = math.sqrt(sd[0] ** 2 + sd[1] ** 2 + sd[2] ** 2)
         if verbose:
             print("{:d},{:d},{:d},{:d}\n".format(sd[0], sd[1], sd[2], sd[3]))
@@ -145,9 +158,15 @@ def check_loaded(color_sensor, verbose):
 
 if __name__ == "__main__":
     """
-    The main function that runs the program. It will initialize all the motoros and sensors, 
+    The main function that runs the program. It will initialize all the motors and sensors,
     wait for the cubes to be loaded, collect the grid from the user and then run the dispensing.
-    It also plays sounds in between steps.
+    It also plays sounds in between steps. The arguments can be specified in the command line
+    For example, python3 main.py -v -p will run the program in verbose mode and preload the grid.
+
+    Args:
+        -v: verbose mode
+        -p: preload the grid
+        -d: terminal input mode
     """
     debug = "-d" in sys.argv
     verbose = "-v" in sys.argv
