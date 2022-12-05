@@ -119,7 +119,6 @@ if __name__ == "__main__":
     debug = "-d" in sys.argv
     verbose = "-v" in sys.argv
     preload_grid = "-p" in sys.argv
-    terminal_input = "-t" in sys.argv
 
     touch_sensor_0 = TouchSensor(3)
     touch_sensor_1 = TouchSensor(4)
@@ -139,7 +138,7 @@ if __name__ == "__main__":
 
     check_loaded(colour_sensor, verbose)
 
-    grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid,terminal_input)
+    grid = get_grid(touch_sensor_0, touch_sensor_1, verbose, preload_grid)
 
     # Run the program
     if verbose:
