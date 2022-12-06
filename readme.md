@@ -37,6 +37,7 @@ The following arguments can be applied:
 |:--------:|:-----:|-------------|
 | -v | Verbose | Adds additional terminal print statements to understand the state of the program and the decision making. | 
 | -d | Debug   | Enter inputs in the terminal instead of through the touch sensors on the BrickPi. |  
+| -p | Preloaded Grid   | Use preloaded grid in code, instead of having to input data |  
   
 
 
